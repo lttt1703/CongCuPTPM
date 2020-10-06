@@ -12,4 +12,16 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("user/index");
 		return mv;
 	}
+	
+	@RequestMapping(value = {"/dang-nhap"}, method = RequestMethod.GET)
+	public ModelAndView SignInPage() {
+		ModelAndView mv = new ModelAndView("user/SignInPage");
+		return mv;
+	}
+	
+	@RequestMapping(value = {"/dang-ky"}, method = RequestMethod.GET)
+	public ModelAndView Register() {
+		ModelAndView mv = new ModelAndView("user/Register");
+		return mv;
+	}
 }

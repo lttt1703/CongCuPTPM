@@ -13,24 +13,22 @@
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Cửa hàng Thực Phẩm || Xanh - Sạch</title>
+<title><decorator:title default="Master-layout"/></title>
 
-<link rel="stylesheet"
-	href="<c:url value="assets/css/bootstrap.min.css"/>" type="text/css">
-<link rel="stylesheet"
-	href="<c:url value="assets/css/font-awesome.min.css"/>" type="text/css">
-<link rel="stylesheet"
-	href="<c:url value="assets/css/elegant-icons.css"/>" type="text/css">
-<link rel="stylesheet"
-	href="<c:url value="assets/css/nice-select.css"/>" type="text/css">
-<link rel="stylesheet"
-	href="<c:url value="assets/css/jquery-ui.min.css"/>" type="text/css">
-<link rel="stylesheet"
-	href="<c:url value="assets/css/owl.carousel.min.css"/>" type="text/css">
-<link rel="stylesheet"
-	href="<c:url value="assets/css/slicknav.min.css"/>" type="text/css">
-<link rel="stylesheet" href="<c:url value="assets/css/style.css"/>"
+<link rel="stylesheet" href="assets/css/bootstrap.min.css"
 	type="text/css">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css"
+	type="text/css">
+<link rel="stylesheet" href="assets/css/elegant-icons.css"
+	type="text/css">
+<link rel="stylesheet" href="assets/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery-ui.min.css"
+	type="text/css">
+<link rel="stylesheet" href="assets/css/owl.carousel.min.css"
+	type="text/css">
+<link rel="stylesheet" href="assets/css/slicknav.min.css"
+	type="text/css">
+<link rel="stylesheet" href="assets/css/style.css" type="text/css">
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
@@ -46,6 +44,7 @@
 
 	<decorator:body></decorator:body>
 	
+
 	<!-- Footer -->
 
 	<%@include file="/WEB-INF/views/layouts/user/footer.jsp"%>
