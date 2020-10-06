@@ -2,84 +2,63 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<title>CSS Template</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-	box-sizing: border-box;
-}
+<meta charset="UTF-8">
+<meta name="description" content="Ogani Template">
+<meta name="keywords" content="Ogani, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Cửa hàng Thực Phẩm || Xanh - Sạch</title>
 
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
+<link rel="stylesheet"
+	href="<c:url value="assets/css/bootstrap.min.css"/>" type="text/css">
+<link rel="stylesheet"
+	href="<c:url value="assets/css/font-awesome.min.css"/>" type="text/css">
+<link rel="stylesheet"
+	href="<c:url value="assets/css/elegant-icons.css"/>" type="text/css">
+<link rel="stylesheet"
+	href="<c:url value="assets/css/nice-select.css"/>" type="text/css">
+<link rel="stylesheet"
+	href="<c:url value="assets/css/jquery-ui.min.css"/>" type="text/css">
+<link rel="stylesheet"
+	href="<c:url value="assets/css/owl.carousel.min.css"/>" type="text/css">
+<link rel="stylesheet"
+	href="<c:url value="assets/css/slicknav.min.css"/>" type="text/css">
+<link rel="stylesheet" href="<c:url value="assets/css/style.css"/>"
+	type="text/css">
 
-/* Style the header */
-header {
-	background-color: #666;
-	padding: 30px;
-	text-align: center;
-	font-size: 35px;
-	color: white;
-}
+<link
+	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+	rel="stylesheet">
 
-/* Create two columns/boxes that floats next to each other */
-nav {
-	float: left;
-	width: 30%;
-	height: 300px; /* only for demonstration, should be removed */
-	background: #ccc;
-	padding: 20px;
-}
-
-/* Style the list inside the menu */
-nav ul {
-	list-style-type: none;
-	padding: 0;
-}
-
-article {
-	float: left;
-	padding: 20px;
-	width: 70%;
-	background-color: #f1f1f1;
-	height: 300px; /* only for demonstration, should be removed */
-}
-
-/* Clear floats after the columns */
-section:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-/* Style the footer */
-footer {
-	background-color: #777;
-	padding: 10px;
-	text-align: center;
-	color: white;
-}
-
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-@media ( max-width : 600px) {
-	nav, article {
-		width: 100%;
-		height: auto;
-	}
-}
-</style>
 </head>
+
 <body>
+
+	<!-- Header -->
 
 	<%@include file="/WEB-INF/views/layouts/user/header.jsp"%>
 
-	<decorator:body/>
+	<decorator:body></decorator:body>
+	
+	<!-- Footer -->
 
 	<%@include file="/WEB-INF/views/layouts/user/footer.jsp"%>
+
+	<!-- Js Plugins -->
+	<script src="assets/js/jquery-3.3.1.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.nice-select.min.js"></script>
+	<script src="assets/js/jquery-ui.min.js"></script>
+	<script src="assets/js/jquery.slicknav.js"></script>
+	<script src="assets/js/mixitup.min.js"></script>
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="assets/js/main.js"></script>
 
 </body>
 </html>
