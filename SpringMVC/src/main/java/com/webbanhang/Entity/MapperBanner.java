@@ -13,7 +13,7 @@ public class MapperBanner implements RowMapper<Banner>{
 		bn.setImg(rs.getString("img"));
 		bn.setCaption(rs.getString("caption"));
 		bn.setContent(rs.getString("content"));
-		return null;
+		return bn;
 	}
 
 }

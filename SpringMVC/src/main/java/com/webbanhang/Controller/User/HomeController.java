@@ -1,4 +1,4 @@
-package com.webbanhang.UserController;
+package com.webbanhang.Controller.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,17 +6,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.webbanhang.Dao.HomeDao;
+import com.webbanhang.Dao.BannerDao;
+import com.webbanhang.Service.User.BannerServiceImpl;
+
 
 @Controller
 public class HomeController {
 	@Autowired
-	HomeDao homeDao;
+	BannerServiceImpl bannerImpl;
 	
 	@RequestMapping(value = {"/", "/trang-chu"}, method = RequestMethod.GET)
 	public ModelAndView Index() {
 		ModelAndView mv = new ModelAndView("user/index");
-		//mv.addObject("banner",homeDao.GetDataBanner());
+		mv.addObject("banners", bannerImpl.GetDataBanner());
 		return mv;
 	}
 	

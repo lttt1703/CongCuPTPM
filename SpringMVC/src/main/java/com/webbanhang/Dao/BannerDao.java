@@ -13,7 +13,7 @@ import com.webbanhang.Entity.Banner;
 import com.webbanhang.Entity.MapperBanner;
 
 @Repository
-public class HomeDao {
+public class BannerDao {
 	@Autowired
 	public JdbcTemplate _jdbcTemplate;
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>Cửa hàng Thực Phẩm - OGANI</title>
 <body>
 
@@ -13,6 +14,7 @@
 							<i class="fa fa-bars"></i> <span>All GOODS</span>
 						</div>
 						<ul>
+							<li><a href="#">${ banners.size() }</a></li>
 							<li><a href="#">Thịt && Trứng</a></li>
 							<li><a href="#">Rau Củ</a></li>
 							<li><a href="#">Trái Cây</a></li>
@@ -45,15 +47,18 @@
 							</div>
 						</div>
 					</div>
-					<div class="hero__item set-bg"
-						data-setbg="assets/img/hero/banner.jpg">
-						<div class="hero__text">
-							<span>SẢN PHẨM HỮU CƠ</span>
-							<h2>100% Organic</h2>
-							<span>Path to Healthy <br> Way to Green
-							</span> <br> <a href="#" class="primary-btn">SHOP NOW</a>
+					<c:forEach var="item" items="${ banners }">
+						<div class="hero__item set-bg"
+							data-setbg="assets/img/hero/${ item.img }">
+							<div class="hero__text">
+								<span>${ item.caption }</span>
+								<h2>${ item.content }</h2>
+								<span>Path to Healthy <br> Way to Green
+								</span> <br> <a href="#" class="primary-btn">SHOP NOW</a>
+							</div>
 						</div>
-					</div>
+					</c:forEach>
+
 				</div>
 			</div>
 		</div>
