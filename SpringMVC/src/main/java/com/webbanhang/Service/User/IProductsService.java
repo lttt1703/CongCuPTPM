@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.webbanhang.Entity.Banner;
+import com.webbanhang.Entity.Products;
+
 @Service
-public interface IBannerService {
+public interface IProductsService {
 	@Autowired
-	public List<Banner> GetDataBanner();
+	public List<Products> GetDataProducts();
 }

@@ -6,19 +6,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.webbanhang.Dao.BannerDao;
-import com.webbanhang.Service.User.BannerServiceImpl;
+import com.webbanhang.Service.User.CategoriesServiceImpl;
+import com.webbanhang.Service.User.ProductsServiceImpl;
+
+
 
 
 @Controller
 public class HomeController {
 	@Autowired
-	BannerServiceImpl bannerImpl;
+	CategoriesServiceImpl categoriesImpl;
+	@Autowired
+	ProductsServiceImpl productsImpl;
 	
 	@RequestMapping(value = {"/", "/trang-chu"}, method = RequestMethod.GET)
 	public ModelAndView Index() {
+		//ModelAndView mv = new ModelAndView("user/index");
 		ModelAndView mv = new ModelAndView("user/index");
-		mv.addObject("banners", bannerImpl.GetDataBanner());
+		mv.addObject("categories", categoriesImpl.GetDataCategories());
+		mv.addObject("products", productsImpl.GetDataProducts());
 		return mv;
 	}
 	

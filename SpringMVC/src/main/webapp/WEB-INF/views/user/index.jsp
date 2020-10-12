@@ -11,21 +11,12 @@
 				<div class="col-lg-3">
 					<div class="hero__categories">
 						<div class="hero__categories__all">
-							<i class="fa fa-bars"></i> <span>All GOODS</span>
+							<i class="fa fa-bars"></i> <span>All FOODS</span>
 						</div>
 						<ul>
-							<li><a href="#">${ banners.size() }</a></li>
-							<li><a href="#">Thịt && Trứng</a></li>
-							<li><a href="#">Rau Củ</a></li>
-							<li><a href="#">Trái Cây</a></li>
-							<li><a href="#">Thủy Hải Sản Cao Cấp</a></li>
-							<li><a href="#">Sữa Tươi</a></li>
-							<li><a href="#">Thức Ăn Nhanh</a></li>
-							<li><a href="#">Sữa Bột</a></li>
-							<li><a href="#">Ngũ Cốc</a></li>
-							<li><a href="#">Nước Sốt && Gia Vị</a></li>
-							<li><a href="#">Nước Uống Trái Cây</a></li>
-							<li><a href="#">Rượu Nhập Khẩu</a></li>
+							<c:forEach var="item" items="${ categories }">
+								<li><a href="#">${ item.name }</a></li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
@@ -47,17 +38,18 @@
 							</div>
 						</div>
 					</div>
-					<c:forEach var="item" items="${ banners }">
-						<div class="hero__item set-bg"
-							data-setbg="assets/img/hero/${ item.img }">
-							<div class="hero__text">
-								<span>${ item.caption }</span>
-								<h2>${ item.content }</h2>
-								<span>Path to Healthy <br> Way to Green
-								</span> <br> <a href="#" class="primary-btn">SHOP NOW</a>
-							</div>
+
+					<div class="hero__item set-bg"
+						data-setbg="assets/img/hero/banner.jpg">
+						<div class="hero__text">
+							<span>FRUIT FRESH</span>
+							<h2>
+								Vegetable <br>100% Organic
+							</h2>
+							<span>Path to Healthy <br> Way to Green
+							</span> <br> <a href="#" class="primary-btn">SHOP NOW</a>
 						</div>
-					</c:forEach>
+					</div>
 
 				</div>
 			</div>
@@ -136,6 +128,26 @@
 				</div>
 			</div>
 			<div class="row featured__filter">
+				<c:forEach var="item" items="${ products }">
+					<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+						<div class="featured__item">
+							<div class="featured__item__pic set-bg"
+								data-setbg="assets/img/featured/${ item.image }">
+								<ul class="featured__item__pic__hover">
+									<li><a href="#"><i class="fa fa-heart"></i></a></li>
+									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
+									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+								</ul>
+							</div>
+							<div class="featured__item__text">
+								<h6>
+									<a href="#">${ item.name } </a>
+								</h6>
+								<h5>${ item.price }</h5>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
 				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
 					<div class="featured__item">
 						<div class="featured__item__pic set-bg"
