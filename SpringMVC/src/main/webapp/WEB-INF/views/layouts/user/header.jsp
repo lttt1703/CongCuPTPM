@@ -22,7 +22,7 @@
 			<span class="arrow_carrot-down"></span>
 		</div>
 		<div class="header__top__right__auth">
-			<a href="./SignInPage.jsp"><i class="fa fa-user"></i> Login</a>
+			<a href="/SpringMVC/dang-nhap"><i class="fa fa-user"></i> Login</a>
 		</div>
 	</div>
 	<nav class="humberger__menu__nav mobile-menu">
@@ -66,7 +66,7 @@
 								class="fa fa-instagram"></i></a>
 						</div>
 						<div class="header__top__right__auth">
-							<a href="./SignInPage.jsp"><i class="fa fa-user"></i> Login</a>
+							<a href="/SpringMVC/dang-nhap"><i class="fa fa-user"></i> Login</a>
 						</div>
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="header__logo">
-					<a href="./index.html"><img src="assets/img/logo.png" alt=""></a>
+					<a href="/SpringMVC"><img src="assets/img/logo.png" alt=""></a>
 				</div>
 			</div>
 			<div class="col-lg-6">

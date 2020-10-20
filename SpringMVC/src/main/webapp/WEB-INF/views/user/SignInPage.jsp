@@ -43,7 +43,7 @@
                             </div>
                             <!-- link đăng ký -->
                             <div id="register-link" class="text-right">
-                                <a href="Register.html" class="text-info font-weight-bold">Đăng ký tại đây</a>
+                                <a href="/SpringMVC/dang-ky" class="text-info font-weight-bold">Đăng ký tại đây</a>
                             </div>
                         </form>
                     </div>

@@ -11,9 +11,7 @@ import com.webbanhang.Entity.Categories;
 import com.webbanhang.Entity.MapperCategories;
 
 @Repository
-public class CategoriesDao {
-	@Autowired
-	public JdbcTemplate _jdbcTemplate;
+public class CategoriesDao extends BaseDao{
 	
 	public List<Categories> GetDataCategories(){
 		List<Categories> list = new ArrayList<Categories>();

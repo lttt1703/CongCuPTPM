@@ -11,13 +11,17 @@ import com.webbanhang.Entity.MapperProducts;
 import com.webbanhang.Entity.Products;
 
 @Repository
-public class ProductsDao {
-	@Autowired
-	public JdbcTemplate _jdbcTemplate;
+public class ProductsDao extends BaseDao{
 
+	private String sqlString() {
+		StringBuilder sql = new StringBuilder();
+		sql.append("Select * From product");
+		return sql.toString();
+	}
+	
 	public List<Products> GetDataProducts() {
 		List<Products> list = new ArrayList<Products>();
-		String sql = "SELECT * FROM product";
+		String sql = sqlString();
 		list = _jdbcTemplate.query(sql, new MapperProducts());
 		return list;
 	}

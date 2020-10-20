@@ -1,30 +1,24 @@
 package com.webbanhang.Controller.User;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.webbanhang.Service.User.CategoriesServiceImpl;
-import com.webbanhang.Service.User.ProductsServiceImpl;
-
-
-
 
 @Controller
-public class HomeController {
-	@Autowired
-	CategoriesServiceImpl categoriesImpl;
-	@Autowired
-	ProductsServiceImpl productsImpl;
+public class HomeController extends BaseController{
 	
 	@RequestMapping(value = {"/", "/trang-chu"}, method = RequestMethod.GET)
 	public ModelAndView Index() {
-		//ModelAndView mv = new ModelAndView("user/index");
-		ModelAndView mv = new ModelAndView("user/index");
-		mv.addObject("categories", categoriesImpl.GetDataCategories());
-		mv.addObject("products", productsImpl.GetDataProducts());
+		_mvShare.addObject("products", _homeService.GetDataProducts());
+		_mvShare.setViewName("user/index");
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = {"/san-pham"}, method = RequestMethod.GET)
+	public ModelAndView Detail() {
+		ModelAndView mv = new ModelAndView("user/detail");
 		return mv;
 	}
 	
