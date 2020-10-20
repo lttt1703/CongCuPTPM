@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file = "/WEB-INF/views/layouts/user/taglib.jsp" %>
 <title>Cửa hàng Thực Phẩm - OGANI</title>
 <body>
 
@@ -104,7 +104,7 @@
 
 									<a href="san-pham/${ item.id }">${ item.name } </a>
 								</h6>
-								<h5>${ item.price }</h5>
+								<h5><fmt:formatNumber type="number" groupingUsed="true" value="${item.price}" /> ₫</h5>
 							</div>
 						</div>
 					</div>

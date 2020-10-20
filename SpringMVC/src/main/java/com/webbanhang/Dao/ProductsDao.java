@@ -15,7 +15,8 @@ public class ProductsDao extends BaseDao{
 
 	private String sqlString() {
 		StringBuilder sql = new StringBuilder();
-		sql.append("Select * From product");
+		sql.append("Select * From product ");
+		sql.append("Order by RAND()");
 		return sql.toString();
 	}
 	
