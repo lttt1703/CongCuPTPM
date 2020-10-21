@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<style>
+.header__menu {
+	display: flex;
+	justify-content: center
+}
+</style>
 <!--Load trang-->
 <div id="preloder">
 	<div class="loader"></div>
@@ -9,7 +15,7 @@
 <div class="humberger_menu_overlay"></div>
 <div class="humberger__menu__wrapper">
 	<div class="humberger__menu__logo">
-		<a href="#"><img src="assets/img/logo.png" alt=""></a>
+		<a href="#"><img src="<c:url value = "/assets/img/logo.png"/>" alt=""></a>
 	</div>
 	<div class="humberger__menu__cart">
 		<ul>
@@ -66,7 +72,8 @@
 								class="fa fa-instagram"></i></a>
 						</div>
 						<div class="header__top__right__auth">
-							<a href="/SpringMVC/dang-nhap"><i class="fa fa-user"></i> Login</a>
+							<a href="/SpringMVC/dang-nhap"><i class="fa fa-user"></i>
+								Login</a>
 						</div>
 					</div>
 				</div>
@@ -77,7 +84,7 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="header__logo">
-					<a href="/SpringMVC"><img src="assets/img/logo.png" alt=""></a>
+					<a href="/SpringMVC"><img src="<c:url value = "/assets/img/logo.png"/>" alt=""></a>
 				</div>
 			</div>
 			<div class="col-lg-6">

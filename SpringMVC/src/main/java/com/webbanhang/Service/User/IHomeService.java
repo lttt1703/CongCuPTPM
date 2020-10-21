@@ -14,4 +14,10 @@ public interface IHomeService {
 	public List<Categories> GetDataCategories();
 	@Autowired
 	public List<Products> GetDataProducts();
+	@Autowired
+	public List<Products> GetDataProductsByCategory(String idCategory);
+	@Autowired
+	public List<Products> GetDataProductsById(String id);
+	@Autowired
+	public List<Categories> GetDataCategoryById(String id);
 }

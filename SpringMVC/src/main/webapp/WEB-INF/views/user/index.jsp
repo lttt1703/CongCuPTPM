@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file = "/WEB-INF/views/layouts/user/taglib.jsp" %>
+<%@include file="/WEB-INF/views/layouts/user/taglib.jsp"%>
 <title>Cửa hàng Thực Phẩm - OGANI</title>
 <body>
-
 	<!-- Hero Section Begin -->
 	<section class="hero">
 		<div class="container">
 			<div class="row">
-
 				<div class="col-lg-3">
 					<div class="hero__categories">
 						<div class="hero__categories__all">
@@ -16,7 +14,7 @@
 						</div>
 						<ul>
 							<c:forEach var="item" items="${ categories }">
-								<li><a href="danh-muc/${ item.id }">${ item.name }</a></li>
+								<li><a href='<c:url value="/danh-muc/${ item.id }" />'>${ item.name }</a></li>
 							</c:forEach>
 						</ul>
 					</div>
@@ -63,13 +61,13 @@
 				<div class="categories__slider owl-carousel">
 					<c:forEach var="item" items="${ products }">
 						<div class="col-lg-3">
-						<div class="categories__item set-bg"
-							data-setbg="assets/img/featured/${ item.image }">
-							<h5>
-								<a href="san-pham/${ item.id }">${ item.name }</a>
-							</h5>
+							<div class="categories__item set-bg"
+								data-setbg="assets/img/featured/${ item.image }">
+								<h5>
+									<a href="san-pham/${ item.id }">${ item.name }</a>
+								</h5>
+							</div>
 						</div>
-					</div>
 					</c:forEach>
 				</div>
 			</div>
@@ -104,7 +102,11 @@
 
 									<a href="san-pham/${ item.id }">${ item.name } </a>
 								</h6>
-								<h5><fmt:formatNumber type="number" groupingUsed="true" value="${item.price}" /> ₫</h5>
+								<h5>
+									<fmt:formatNumber type="number" groupingUsed="true"
+										value="${item.price}" />
+									₫
+								</h5>
 							</div>
 						</div>
 					</div>

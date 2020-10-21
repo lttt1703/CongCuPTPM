@@ -1,6 +1,7 @@
 package com.webbanhang.Controller.User;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,10 +17,11 @@ public class HomeController extends BaseController{
 		return _mvShare;
 	}
 	
-	@RequestMapping(value = {"/san-pham"}, method = RequestMethod.GET)
-	public ModelAndView Detail() {
-		ModelAndView mv = new ModelAndView("user/detail");
-		return mv;
+	@RequestMapping(value = {"san-pham/{id}"})
+	public ModelAndView Detail(@PathVariable String id) {
+		_mvShare.addObject("productsById", _homeService.GetDataProductsById(id));
+		_mvShare.setViewName("user/detail");
+		return _mvShare;
 	}
 	
 	@RequestMapping(value = {"/dang-nhap"}, method = RequestMethod.GET)
