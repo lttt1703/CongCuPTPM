@@ -2,7 +2,7 @@ package com.webbanhang.Dto;
 
 public class PaginatesDto {
 	
-	private int currentPage, limit, start, end, total;
+	private int currentPage, limit, start, end, totalPage;
 
 	public PaginatesDto() {
 		super();
@@ -14,7 +14,7 @@ public class PaginatesDto {
 		this.limit = limit;
 		this.start = start;
 		this.end = end;
-		this.total = total;
+		this.totalPage = total;
 	}
 
 	public int getCurrentPage() {
@@ -49,12 +49,12 @@ public class PaginatesDto {
 		this.end = end;
 	}
 
-	public int getTotal() {
-		return total;
+	public int getTotalPage() {
+		return totalPage;
 	}
 
-	public void setTotal(int total) {
-		this.total = total;
+	public void setTotalPage(int total) {
+		this.totalPage = total;
 	}
 
 }

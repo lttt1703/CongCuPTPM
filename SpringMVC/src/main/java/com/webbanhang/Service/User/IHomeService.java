@@ -19,5 +19,7 @@ public interface IHomeService {
 	@Autowired
 	public List<Products> GetDataProductsById(String id);
 	@Autowired
+	public List<Products> GetDataProductsPaginate(int start, int limit);
+	@Autowired
 	public List<Categories> GetDataCategoryById(String id);
 }

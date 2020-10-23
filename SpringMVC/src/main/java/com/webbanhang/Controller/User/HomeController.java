@@ -6,13 +6,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.webbanhang.Dto.PaginatesDto;
+
 
 @Controller
 public class HomeController extends BaseController{
 	
+	private int _limitProduct = 12;
+	
 	@RequestMapping(value = {"/", "/trang-chu"}, method = RequestMethod.GET)
 	public ModelAndView Index() {
-		_mvShare.addObject("products", _homeService.GetDataProducts());
+		
+		int totalData = _homeService.GetDataProducts().size();
+		
+		PaginatesDto paginate = _paginatesService.GetInfoPaginates(totalData, _limitProduct, 1);
+		
+		_mvShare.addObject("paginateInfo", paginate);
+		
+		_mvShare.addObject("productsPaginate", _homeService.GetDataProductsPaginate(paginate.getStart(), _limitProduct));
+		
+		_mvShare.setViewName("user/index");
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = {"/trang-chu/page-{currentPage}"})
+	public ModelAndView Index(@PathVariable String currentPage) {
+		
+		int totalData = _homeService.GetDataProducts().size();
+		
+		PaginatesDto paginate = _paginatesService.GetInfoPaginates(totalData, _limitProduct, Integer.parseInt(currentPage));
+		
+		_mvShare.addObject("paginateInfo", paginate);
+		
+		_mvShare.addObject("productsPaginate", _homeService.GetDataProductsPaginate(paginate.getStart(), _limitProduct));
+		
 		_mvShare.setViewName("user/index");
 		return _mvShare;
 	}

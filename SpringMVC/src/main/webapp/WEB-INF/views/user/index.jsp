@@ -61,8 +61,7 @@
 				<div class="categories__slider owl-carousel">
 					<c:forEach var="item" items="${ products }">
 						<div class="col-lg-3">
-							<div class="categories__item set-bg"
-								data-setbg="assets/img/featured/${ item.image }">
+							<div class="categories__item set-bg" data-setbg="${ item.image }">
 								<h5>
 									<a href="san-pham/${ item.id }">${ item.name }</a>
 								</h5>
@@ -86,11 +85,11 @@
 				</div>
 			</div>
 			<div class="row featured__filter">
-				<c:forEach var="item" items="${ products }">
+				<c:forEach var="item" items="${ productsPaginate }">
 					<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
 						<div class="featured__item">
 							<div class="featured__item__pic set-bg"
-								data-setbg="assets/img/featured/${ item.image }">
+								data-setbg="${ item.image }">
 								<ul class="featured__item__pic__hover">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -115,6 +114,21 @@
 		</div>
 	</section>
 	<!-- Featured Section End -->
+
+
+	<div class="product__pagination"
+		style="display: flex; justify-content: center; padding: 10px;">
+		<c:forEach var="item" begin="1" end="${ paginateInfo.totalPage }"
+			varStatus="loop">
+			<c:if test="${ (loop.index ) == paginateInfo.currentPage}">
+				<a style="background-color: green;" href="/SpringMVC/trang-chu/page-${ loop.index}"><c:out value = "${loop.index}"/></a>
+			</c:if> 
+			<c:if test="${ (loop.index ) != paginateInfo.currentPage}">
+				<a  href="/SpringMVC/trang-chu/page-${ loop.index}"><c:out value = "${loop.index}"/></a>
+			</c:if>
+		</c:forEach>
+		<a href="#"><i class="fa fa-long-arrow-right"></i></a>
+	</div>
 
 	<!-- Banner Begin -->
 	<div class="banner">

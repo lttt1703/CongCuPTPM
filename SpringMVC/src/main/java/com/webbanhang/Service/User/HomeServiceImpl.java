@@ -35,4 +35,8 @@ public class HomeServiceImpl implements IHomeService{
 	public List<Products> GetDataProductsById(String id) {
 		return productDao.GetDataProductsById(id);
 	}
+
+	public List<Products> GetDataProductsPaginate(int start, int limit) {
+		return productDao.GetDataProductsPaginate(start, limit);
+	}
 }
