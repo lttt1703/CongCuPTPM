@@ -16,16 +16,19 @@
 <title><decorator:title default="Master-layout" /></title>
 
 <link rel="stylesheet"
-	href="<c:url value = "/assets/css/bootstrap.min.css" />" type="text/css">
+	href="<c:url value = "/assets/css/bootstrap.min.css" />"
+	type="text/css">
 <link rel="stylesheet"
 	href="<c:url value = "/assets/css/font-awesome.min.css" />"
 	type="text/css">
 <link rel="stylesheet"
-	href="<c:url value = "/assets/css/elegant-icons.css" />" type="text/css">
+	href="<c:url value = "/assets/css/elegant-icons.css" />"
+	type="text/css">
 <link rel="stylesheet"
 	href="<c:url value = "/assets/css/nice-select.css" />" type="text/css">
 <link rel="stylesheet"
-	href="<c:url value = "/assets/css/jquery-ui.min.css" />" type="text/css">
+	href="<c:url value = "/assets/css/jquery-ui.min.css" />"
+	type="text/css">
 <link rel="stylesheet"
 	href="<c:url value = "/assets/css/owl.carousel.min.css" />"
 	type="text/css">
@@ -62,6 +65,7 @@
 	<script src="<c:url value = "/assets/js/mixitup.min.js" />"></script>
 	<script src="<c:url value = "/assets/js/owl.carousel.min.js" />"></script>
 	<script src="<c:url value = "/assets/js/main.js" />"></script>
-
+	
+	<decorator:getProperty property="page.script"></decorator:getProperty>
 </body>
 </html>

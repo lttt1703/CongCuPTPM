@@ -40,6 +40,13 @@ public class ProductsDao extends BaseDao{
 		list = _jdbcTemplate.query(sql, new MapperProducts());
 		return list;
 	}
+	
+	public Products GetProductById(int id) {
+		Products product = new Products();
+		String sql = "Select * from product where id = "+ id;
+		product = _jdbcTemplate.queryForObject(sql, new MapperProducts());
+		return product;
+	}
 
 	public List<Products> GetDataProductsPaginate(int start, int limit) {
 		List<Products> list = new ArrayList<Products>();
