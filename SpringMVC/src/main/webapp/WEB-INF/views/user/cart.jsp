@@ -65,7 +65,8 @@
 												value="${item.value.product.price * item.value.quanty}" />
 											₫</td>
 										<td class="shoping__cart__item__close"><button
-												type="button" class="btn btn-info edit-cart">update</button></td>
+												data-id="${ item.key }" type="button"
+												class="btn btn-info btn-mini edit-cart">update</button></td>
 										<td class="shoping__cart__item__close"><a
 											href="/SpringMVC/DeleteCart/${ item.key }"><span
 												class="icon_close"></span></a></td>
@@ -102,11 +103,11 @@
 
 </body>
 
-<content tag="script"> 
-	<script>
-		$(".edit-cart").on("click", function(){
-			alert("edit sussces");
-		}); 
-	</script> 
-</content>
+<content tag="script"> <script>
+	$(".edit-cart").on("click", function() {
+		var id = $(this).data("id");
+		var quanty = $("#quanty-cart-" + id).val();
+		window.location = "EditCart/" + id + "/" + quanty;
+	});
+</script> </content>
 </html>
