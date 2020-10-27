@@ -51,6 +51,12 @@ public class HomeController extends BaseController{
 		return _mvShare;
 	}
 	
+	@RequestMapping(value = {"/gio-hang"}, method = RequestMethod.GET)
+	public ModelAndView Cart() {
+		_mvShare.setViewName("user/cart");
+		return _mvShare;
+	}
+	
 	@RequestMapping(value = {"/dang-nhap"}, method = RequestMethod.GET)
 	public ModelAndView SignInPage() {
 		ModelAndView mv = new ModelAndView("user/SignInPage");

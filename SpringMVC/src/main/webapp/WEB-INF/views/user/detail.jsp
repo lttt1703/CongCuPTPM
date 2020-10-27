@@ -29,7 +29,7 @@
 </head>
 
 <body>
-
+	
 	<c:forEach var="item" items="${ productsById }">
 		<!-- Breadcrumb Section Begin -->
 		<section class="breadcrumb-section set-bg"
@@ -49,7 +49,6 @@
 			</div>
 		</section>
 		<!-- Breadcrumb Section End -->
-
 		<!-- Product Details Section Begin -->
 		<section class="product-details spad">
 			<div class="container">
@@ -84,7 +83,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="#" class="primary-btn">ADD TO CARD</a> <a href="#"
+							<a href="/SpringMVC/AddCart/${ item.id }" class="primary-btn">Thêm giỏ hàng</a> <a href="#"
 								class="heart-icon"><span class="icon_heart_alt"></span></a>
 							<ul>
 								<li><b>Tình trạng</b> <span>Còn hàng</span></li>
