@@ -106,7 +106,7 @@
 	<script>
 		$(".edit-cart").on("click", function(){
 			alert("edit sussces");
-		});
+		}); 
 	</script> 
 </content>
 </html>
