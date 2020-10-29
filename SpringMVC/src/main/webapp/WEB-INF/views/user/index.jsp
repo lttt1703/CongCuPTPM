@@ -19,7 +19,6 @@
 						</ul>
 					</div>
 				</div>
-
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
@@ -73,7 +72,6 @@
 		</div>
 	</section>
 	<!-- Categories Section End -->
-
 	<!-- Featured Section Begin -->
 	<section class="featured spad">
 		<div class="container">
@@ -93,7 +91,8 @@
 								<ul class="featured__item__pic__hover">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="/SpringMVC/AddCart/${ item.id }"><i class="fa fa-shopping-cart"></i></a></li>
+									<li><a href="/SpringMVC/AddCart/${ item.id }"><i
+											class="fa fa-shopping-cart"></i></a></li>
 								</ul>
 							</div>
 							<div class="featured__item__text">
@@ -121,10 +120,13 @@
 		<c:forEach var="item" begin="1" end="${ paginateInfo.totalPage }"
 			varStatus="loop">
 			<c:if test="${ (loop.index ) == paginateInfo.currentPage}">
-				<a style="background-color: green;" href="/SpringMVC/trang-chu/page-${ loop.index}"><c:out value = "${loop.index}"/></a>
-			</c:if> 
+				<a style="background-color: green;"
+					href="/SpringMVC/trang-chu/page-${ loop.index}"><c:out
+						value="${loop.index}" /></a>
+			</c:if>
 			<c:if test="${ (loop.index ) != paginateInfo.currentPage}">
-				<a  href="/SpringMVC/trang-chu/page-${ loop.index}"><c:out value = "${loop.index}"/></a>
+				<a href="/SpringMVC/trang-chu/page-${ loop.index}"><c:out
+						value="${loop.index}" /></a>
 			</c:if>
 		</c:forEach>
 		<a href="#"><i class="fa fa-long-arrow-right"></i></a>

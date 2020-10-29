@@ -22,19 +22,23 @@
 				<div id="login-column" class="col-md-6">
 					<!-- Khung đăng nhập -->
 					<div id="login-box" class="col-md-12">
-						<form id="login-form" class="form" action="" method="post">
+						<form:form action="dang-nhap" method="POST" modelAttribute="user">
+
 							<h3 class="text-center text-info">Đăng nhập</h3>
+								<p style="color: red;">${ statusLogin }</p>
 							<!-- Tên đăng nhập -->
 							<div class="form-group">
 								<label for="username" class="text-info font-weight-bold">Tên
-									đăng nhập:</label><br> <input type="text" name="username"
-									id="username" class="form-control">
+									đăng nhập:</label> <br>
+								<form:input type="text" class="form-control"
+									placeholder="Tên đăng nhập" path="user" />
 							</div>
 							<!-- Mật khẩu -->
 							<div class="form-group">
 								<label for="password" class="text-info font-weight-bold">Mật
-									khẩu:</label><br> <input type="password" name="password"
-									id="password" class="form-control">
+									khẩu:</label><br>
+								<form:input type="password" class="form-control"
+									placeholder="Mật khẩu" path="password" />
 							</div>
 							<!-- Lưu mật khẩu và nút đăng nhập -->
 							<div class="form-group">
@@ -51,7 +55,7 @@
 								<a href="/SpringMVC/dang-ky" class="text-info font-weight-bold">Đăng
 									ký tại đây</a>
 							</div>
-						</form>
+						</form:form>
 					</div>
 				</div>
 			</div>
