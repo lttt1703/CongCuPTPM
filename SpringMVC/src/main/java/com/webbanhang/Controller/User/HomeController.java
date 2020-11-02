@@ -112,4 +112,10 @@ public class HomeController extends BaseController {
 		session.removeAttribute("userInfo");
 		return "redirect:"+ request.getHeader("Referer");
 	}
+	
+	@RequestMapping(value = { "/check-out" }, method = RequestMethod.GET)
+	public ModelAndView Checkout() {
+		_mvShare.setViewName("user/checkout");
+		return _mvShare;
+	}
 }

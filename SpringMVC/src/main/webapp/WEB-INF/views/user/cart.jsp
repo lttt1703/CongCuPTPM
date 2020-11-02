@@ -93,12 +93,20 @@
 							<li>Tổng tiền <span><fmt:formatNumber type="number"
 										groupingUsed="true" value="${ CartPrice }" /> ₫</span></li>
 						</ul>
-						<a href="#" class="primary-btn">Thanh toán</a>
+						<c:if test="${ not empty userInfo }">
+							<a href="<c:url value="/check-out"/>" class="primary-btn">Thanh
+								toán</a>
+						</c:if>
+						<c:if test="${ empty userInfo }">
+							<a href="<c:url value="/dang-nhap"/>" class="primary-btn check-out">Thanh
+								toán</a>
+						</c:if>
+
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> 
 	<!-- Shoping Cart Section End -->
 
 </body>
@@ -108,6 +116,10 @@
 		var id = $(this).data("id");
 		var quanty = $("#quanty-cart-" + id).val();
 		window.location = "EditCart/" + id + "/" + quanty;
+	});
+	
+	$(".check-out").on("click", function() {
+		alert("Đăng nhập để tiến hành đặt hàng!")
 	});
 </script> </content>
 </html>
