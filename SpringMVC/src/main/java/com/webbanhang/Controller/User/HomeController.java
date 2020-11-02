@@ -1,5 +1,6 @@
 package com.webbanhang.Controller.User;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,9 +96,9 @@ public class HomeController extends BaseController {
 
 	@RequestMapping(value = { "/dang-nhap" }, method = RequestMethod.POST)
 	public ModelAndView SignInPage(HttpSession session, @ModelAttribute("user") Users user) {
-		boolean check = accountService.CheckAccount(user);
+		user = accountService.CheckAccount(user);
 		_mvShare.addObject("statusLogin", "");
-		if (check) {		
+		if (user != null) {		
 			_mvShare.setViewName("redirect:trang-chu");
 			session.setAttribute("userInfo", user);
 		} else {
@@ -106,4 +107,9 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
+	@RequestMapping(value = { "/dang-xuat" }, method = RequestMethod.GET)
+	public String Logout(HttpSession session, HttpServletRequest request) {
+		session.removeAttribute("userInfo");
+		return "redirect:"+ request.getHeader("Referer");
+	}
 }

@@ -38,7 +38,7 @@
 						</div>
 					</div>
 					<div class="hero__item set-bg"
-						data-setbg="assets/img/hero/banner.jpg">
+						data-setbg="<c:url value="/assets/img/hero/banner.jpg"/>">
 						<div class="hero__text">
 							<span>FRUIT FRESH</span>
 							<h2>

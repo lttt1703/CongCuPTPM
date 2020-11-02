@@ -6,6 +6,25 @@
 	display: flex;
 	justify-content: center
 }
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	padding: 12px 16px;
+	z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
 </style>
 <!--Load trang-->
 <div id="preloder">
@@ -73,10 +92,22 @@
 								class="fa fa-twitter"></i></a> <a href="#"><i
 								class="fa fa-instagram"></i></a>
 						</div>
-						<div class="header__top__right__auth">
-							<a href="/SpringMVC/dang-nhap"><i class="fa fa-user"></i>
-								Login</a>
-						</div>
+						<c:if test="${ empty userInfo }">
+							<div class="header__top__right__auth">
+								<a href="/SpringMVC/dang-nhap"><i class="fa fa-user"></i>
+									Login</a>
+							</div>
+						</c:if>
+						<c:if test="${ not empty userInfo }">
+							<div class="dropdown">
+								<span>Xin chào ${ userInfo.name }</span>
+								<div class="dropdown-content">
+									<a href="/SpringMVC/dang-xuat"><i class="fa fa-user"></i>
+									Đăng xuất</a>
+								</div>
+							</div>
+						</c:if>
+
 					</div>
 				</div>
 			</div>
