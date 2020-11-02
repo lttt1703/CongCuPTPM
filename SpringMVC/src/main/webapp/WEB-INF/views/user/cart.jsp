@@ -77,12 +77,15 @@
 					</div>
 				</div>
 			</div>
+			<c:if test="${ empty Cart }">
+				<h4 style="display: flex; justify-content: center; color:#B62708">Giỏ hàng
+					trống, mời bạn chọn thêm sản phẩm!</h4>
+			</c:if>
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="shoping__cart__btns">
-						<a href="/SpringMVC" class="primary-btn cart-btn">Tiếp tục mua
-							hàng</a> <a href="#" class="primary-btn cart-btn cart-btn-right"><span
-							class="icon_loading"></span>Cập nhật giỏ hàng</a>
+						<a href="/SpringMVC" class="primary-btn">Tiếp tục mua
+							hàng</a>
 					</div>
 				</div>
 
@@ -98,15 +101,15 @@
 								toán</a>
 						</c:if>
 						<c:if test="${ empty userInfo }">
-							<a href="<c:url value="/dang-nhap"/>" class="primary-btn check-out">Thanh
-								toán</a>
+							<a href="<c:url value="/dang-nhap"/>"
+								class="primary-btn check-out">Thanh toán</a>
 						</c:if>
 
 					</div>
 				</div>
 			</div>
 		</div>
-	</section> 
+	</section>
 	<!-- Shoping Cart Section End -->
 
 </body>
@@ -117,7 +120,7 @@
 		var quanty = $("#quanty-cart-" + id).val();
 		window.location = "EditCart/" + id + "/" + quanty;
 	});
-	
+
 	$(".check-out").on("click", function() {
 		alert("Đăng nhập để tiến hành đặt hàng!")
 	});

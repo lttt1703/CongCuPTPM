@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.webbanhang.Dto.CartDto;
+import com.webbanhang.Entity.Users;
 import com.webbanhang.Service.User.CartServiceImpl;
 
 @Controller
@@ -29,6 +30,7 @@ public class CartController extends BaseController{
 		session.setAttribute("Cart", cart);
 		session.setAttribute("CartQuanty", cartService.TotalQuanty(cart));
 		session.setAttribute("CartPrice", cartService.TotalPrice(cart));
+		//Users loginInfo = (Users)session.getAttribute("userInfo");
 		return "redirect:" + request.getHeader("Referer");
 	}
 	

@@ -1,5 +1,7 @@
 package com.webbanhang.Controller.User;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.webbanhang.Dto.CartDto;
 import com.webbanhang.Dto.PaginatesDto;
+import com.webbanhang.Entity.Bills;
 import com.webbanhang.Entity.Users;
 import com.webbanhang.Service.User.AccountServiceImpl;
+import com.webbanhang.Service.User.BillsServiceImpl;
 
 @Controller
 public class HomeController extends BaseController {
@@ -21,6 +26,9 @@ public class HomeController extends BaseController {
 	private int _limitProduct = 12;
 	@Autowired
 	AccountServiceImpl accountService = new AccountServiceImpl();
+	
+	@Autowired
+	BillsServiceImpl billsService = new BillsServiceImpl();
 
 	@RequestMapping(value = { "/", "/trang-chu" }, method = RequestMethod.GET)
 	public ModelAndView Index() {
@@ -114,8 +122,32 @@ public class HomeController extends BaseController {
 	}
 	
 	@RequestMapping(value = { "/check-out" }, method = RequestMethod.GET)
-	public ModelAndView Checkout() {
+	public ModelAndView Checkout(HttpServletRequest request, HttpSession session) {
 		_mvShare.setViewName("user/checkout");
+		Bills bill = new Bills();
+		Users loginInfo = (Users)session.getAttribute("userInfo");
+		if(loginInfo!=null) {
+			bill.setUser(loginInfo.getUser());
+		}
+		_mvShare.addObject("bill", new Bills());
 		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/check-out" }, method = RequestMethod.POST)
+	public String Checkout(HttpServletRequest request, HttpSession session, @ModelAttribute("bill") Bills bill) {
+		
+		//String quanty = (String)session.getAttribute("CartQuanty");
+		
+		Users loginInfo = (Users)session.getAttribute("userInfo");
+		if(loginInfo!=null) {
+			bill.setUser(loginInfo.getUser());
+
+			if(billsService.AddBill(bill)>0) {
+				HashMap<Integer, CartDto> carts = (HashMap<Integer, CartDto>)session.getAttribute("Cart");
+				billsService.AddBillDetail(carts);
+			}
+			session.removeAttribute("Cart");
+		}	
+		return "redirect:gio-hang";
 	}
 }
