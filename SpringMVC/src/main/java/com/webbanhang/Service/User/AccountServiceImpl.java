@@ -1,5 +1,7 @@
 package com.webbanhang.Service.User;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,11 @@ public class AccountServiceImpl implements IAccountService {
 
 		}
 		return null;
+	}
+
+	public List<Users> GetDataUsers() {
+		// TODO Auto-generated method stub
+		return userDao.GetDataUsers();
 	}
 
 }

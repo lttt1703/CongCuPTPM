@@ -19,6 +19,7 @@ import com.webbanhang.Entity.Bills;
 import com.webbanhang.Entity.Users;
 import com.webbanhang.Service.User.AccountServiceImpl;
 import com.webbanhang.Service.User.BillsServiceImpl;
+import com.webbanhang.Service.User.CartServiceImpl;
 
 @Controller
 public class HomeController extends BaseController {
@@ -29,6 +30,9 @@ public class HomeController extends BaseController {
 	
 	@Autowired
 	BillsServiceImpl billsService = new BillsServiceImpl();
+	
+	@Autowired
+	private CartServiceImpl cartService = new CartServiceImpl();
 
 	@RequestMapping(value = { "/", "/trang-chu" }, method = RequestMethod.GET)
 	public ModelAndView Index() {
@@ -141,13 +145,32 @@ public class HomeController extends BaseController {
 		Users loginInfo = (Users)session.getAttribute("userInfo");
 		if(loginInfo!=null) {
 			bill.setUser(loginInfo.getUser());
-
+			HashMap<Integer, CartDto> carts = (HashMap<Integer, CartDto>)session.getAttribute("Cart");
+			bill.setQuanty(cartService.TotalQuanty(carts));
+			bill.setTotal(cartService.TotalPrice(carts));
 			if(billsService.AddBill(bill)>0) {
-				HashMap<Integer, CartDto> carts = (HashMap<Integer, CartDto>)session.getAttribute("Cart");
+				
 				billsService.AddBillDetail(carts);
 			}
 			session.removeAttribute("Cart");
 		}	
 		return "redirect:gio-hang";
+	}
+	
+	@RequestMapping(value = { "/admin/trang-chu" }, method = RequestMethod.GET)
+	public ModelAndView admin() {		
+		_mvShare.setViewName("admin/index");
+		return _mvShare;
+	}
+	@RequestMapping(value = { "/admin/list-user" }, method = RequestMethod.GET)
+	public ModelAndView ListUser() {	
+		_mvShare.addObject("listUser", accountService.GetDataUsers());
+		_mvShare.setViewName("admin/listuser");
+		return _mvShare;
+	}
+	@RequestMapping(value = { "/admin/list-products" }, method = RequestMethod.GET)
+	public ModelAndView ListProducts() {	
+		_mvShare.setViewName("admin/listproducts");
+		return _mvShare;
 	}
 }

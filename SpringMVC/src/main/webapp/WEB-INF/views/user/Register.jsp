@@ -55,8 +55,7 @@
 							<div class="form-group text-center">
 								<input type="submit" name="submit" id="submit"
 									class="btn btn-info btn-md font-weight-bold" value="Đăng ký">
-								<input type="button" onclick="window.location='/SpringMVC/dang-nhap';"
-									class="btn btn-info btn-md font-weight-bold" value="Đăng nhập">
+							
 							</div>
 						</form:form>
 					</div>

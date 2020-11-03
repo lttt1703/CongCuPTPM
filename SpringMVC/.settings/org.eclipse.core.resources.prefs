@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/webbanhang/Controller/User/HomeController.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/admin/index.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/layouts/user.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/user/SignInPage.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/user/detail.jsp=UTF-8

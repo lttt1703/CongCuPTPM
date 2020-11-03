@@ -26,6 +26,6 @@
 	</filter-mapping>
 	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
-		<session-timeout>15</session-timeout>
+		<session-timeout>30</session-timeout>
 	</session-config>
 </web-app>

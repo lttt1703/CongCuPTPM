@@ -1,8 +1,13 @@
 package com.webbanhang.Dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
+import com.webbanhang.Entity.MapperProducts;
 import com.webbanhang.Entity.MapperUsers;
+import com.webbanhang.Entity.Products;
 import com.webbanhang.Entity.Users;
 
 @Repository
@@ -36,6 +41,13 @@ public class UsersDao extends BaseDao {
 		String sql = "SELECT * FROM users WHERE user = '" + user.getUser() + "'";
 		Users result = _jdbcTemplate.queryForObject(sql, new MapperUsers());
 		return result;
+	}
+	
+	public List<Users> GetDataUsers() {
+		List<Users> list = new ArrayList<Users>();
+		String sql = "Select * from users";
+		list = _jdbcTemplate.query(sql, new MapperUsers());
+		return list;
 	}
 
 }
