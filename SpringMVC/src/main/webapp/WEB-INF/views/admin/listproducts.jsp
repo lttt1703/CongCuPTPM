@@ -13,7 +13,8 @@
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Danh sách sản phẩm</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Danh sách sản
+					phẩm</h6>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -34,12 +35,10 @@
 									<td>${ item.name }</td>
 									<td>${ item.detail }</td>
 									<td class="shoping__cart__item"><img width="100"
-											height="100" src="${ item.image }" alt="">
-									<td><button type="button"
-											class="btn btn-info btn-mini edit-cart">Edit</button></td>
-									<td><button type="button"
-											class="btn btn-info btn-mini edit-cart">Delete</button></td>
-								</tr> 
+										height="100" src="${ item.image }" alt="">
+									<td><a href="/SpringMVC/admin/chinh-sua-san-pham/${ item.id }" class="primary-btn">Edit</a></td>
+									<td><a href="/SpringMVC/admin/xoa-san-pham/${ item.id }" class="primary-btn">Delete</a></td>
+								</tr>
 							</tbody>
 						</c:forEach>
 

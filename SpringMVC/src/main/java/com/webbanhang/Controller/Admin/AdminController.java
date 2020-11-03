@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -100,11 +101,26 @@ public class AdminController extends BaseController{
 	public ModelAndView AddProduct(@ModelAttribute("newProduct") Products newProduct) {
 		int count = homeService.AddProduct(newProduct);
 		if (count > 0) {
-			_mvShare.addObject("addProductStatus", "Thêm thành công");
-		} else {
-			_mvShare.addObject("addProductStatus", "Thêm thất bại");
-		}
-		_mvShare.setViewName("admin/listproducts");
+			_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
+			_mvShare.addObject("products", homeService.GetDataProducts());
+		}	
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/admin/chinh-sua-san-pham/{id}" }, method = RequestMethod.GET)
+	public ModelAndView EditProduct(@PathVariable String id) {
+		_mvShare.addObject("editProduct", homeService.GetProductById(id));
+		_mvShare.setViewName("admin/editproduct");
+		return _mvShare;
+	}
+
+	@RequestMapping(value = { "/admin/chinh-sua-san-pham/{id}" }, method = RequestMethod.POST)
+	public ModelAndView EditProduct(@ModelAttribute("editProduct") Products editProduct, @PathVariable String id) {
+		int count = homeService.EditProduct(editProduct);
+		if (count > 0) {
+			_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
+			_mvShare.addObject("products", homeService.GetDataProducts());
+		}	
 		return _mvShare;
 	}
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.webbanhang.Dao.CategoriesDao;
 import com.webbanhang.Dao.ProductsDao;
 import com.webbanhang.Entity.Categories;
+import com.webbanhang.Entity.NSX;
 import com.webbanhang.Entity.Products;
 @Service
 public class HomeServiceImpl implements IHomeService{
@@ -43,5 +44,21 @@ public class HomeServiceImpl implements IHomeService{
 
 	public int AddProduct(Products product) {
 		return productDao.AddProduct(product);
+	}
+
+	public List<NSX> GetDataNSX() {
+		return categoriesDao.GetDataNSX();
+	}
+
+	public int EditProduct(Products product) {
+		return productDao.EditProduct(product);
+	}
+
+	public int DeleteProduct(Products product) {
+		return productDao.DeleteProduct(product);
+	}
+
+	public Products GetProductById(String id) {
+		return productDao.GetProductById(id);
 	}
 }

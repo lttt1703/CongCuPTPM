@@ -21,6 +21,7 @@ public class BaseController {
 	public ModelAndView Init() {
 		_mvShare.addObject("categories", _homeService.GetDataCategories());
 		_mvShare.addObject("products", _homeService.GetDataProducts());
+		_mvShare.addObject("nsx", _homeService.GetDataNSX());
 		return _mvShare;
 	}
 }

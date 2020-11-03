@@ -16,10 +16,10 @@
 				<div id="register-column" class="col-md-6">
 					<!-- Khung đăng nhập -->
 					<div id="register-box" class="col-md-12">
-						<form:form action="/SpringMVC/admin/them-san-pham" method="POST"
-							modelAttribute="newProduct">
+						<form:form action="/SpringMVC/admin/chinh-sua-san-pham/${ editProduct.id }" method="POST"
+							modelAttribute="editProduct">
 
-							<h3 class="text-center text-info">Thêm sản phẩm</h3>
+							<h3 class="text-center text-info">Chỉnh sửa thông tin sản phẩm</h3>
 							<!-- FirstName -->
 							<div class="form-group">
 								<label for="username" class="text-info font-weight-bold">Tên
@@ -73,7 +73,7 @@
 							<!-- Nút đăng ký -->
 							<div class="form-group text-center">
 								<input type="submit" name="submit" id="submit"
-									class="btn btn-info btn-md font-weight-bold" value="Thêm">
+									class="btn btn-info btn-md font-weight-bold" value="Chính sửa">
 
 							</div>
 						</form:form>
