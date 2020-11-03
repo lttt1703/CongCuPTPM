@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.webbanhang.Entity.Categories;
 import com.webbanhang.Entity.Products;
+import com.webbanhang.Entity.Users;
 
 @Service
 public interface IHomeService {
@@ -22,4 +23,6 @@ public interface IHomeService {
 	public List<Products> GetDataProductsPaginate(int start, int limit);
 	@Autowired
 	public List<Categories> GetDataCategoryById(String id);
+	@Autowired
+	public int AddProduct(Products product);
 }

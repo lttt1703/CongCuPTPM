@@ -52,8 +52,8 @@
 					<h6 class="collapse-header">Products</h6>
 					<a class="collapse-item" href="<c:url value="/admin/danh-sach-san-pham"/>">Danh sách sản phẩm</a> <a
 						class="collapse-item" href="<c:url value="/admin/danh-sach-danh-muc"/>">Danh sách danh mục</a> <a
-						class="collapse-item" href="#">Thêm sản phẩm mới</a> <a
-						class="collapse-item" href="#">Thêm danh mục mới</a>
+						class="collapse-item" href="<c:url value="/admin/them-san-pham"/>">Thêm sản phẩm mới</a> <a
+						class="collapse-item" href="<c:url value="/admin/them-danh-muc"/>">Thêm danh mục mới</a>
 				</div>
 			</div></li>
 

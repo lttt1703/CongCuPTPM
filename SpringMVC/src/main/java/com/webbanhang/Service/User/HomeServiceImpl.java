@@ -2,6 +2,7 @@ package com.webbanhang.Service.User;
 
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,9 @@ public class HomeServiceImpl implements IHomeService{
 
 	public List<Products> GetDataProductsPaginate(int start, int limit) {
 		return productDao.GetDataProductsPaginate(start, limit);
+	}
+
+	public int AddProduct(Products product) {
+		return productDao.AddProduct(product);
 	}
 }

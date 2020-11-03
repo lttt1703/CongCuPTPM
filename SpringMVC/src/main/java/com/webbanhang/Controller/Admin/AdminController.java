@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.webbanhang.Controller.User.BaseController;
+import com.webbanhang.Entity.Products;
 import com.webbanhang.Entity.Users;
 import com.webbanhang.Service.User.AccountServiceImpl;
 import com.webbanhang.Service.User.BillsServiceImpl;
+import com.webbanhang.Service.User.HomeServiceImpl;
 
 @Controller
 public class AdminController extends BaseController{
@@ -22,6 +24,8 @@ public class AdminController extends BaseController{
 	AccountServiceImpl accountService = new AccountServiceImpl();
 	@Autowired
 	BillsServiceImpl billsService = new BillsServiceImpl();
+	@Autowired
+	HomeServiceImpl homeService = new HomeServiceImpl();
 		
 	@RequestMapping(value = { "/admin/","/admin/trang-chu" }, method = RequestMethod.GET)
 	public ModelAndView admin(Users admin) {
@@ -87,20 +91,20 @@ public class AdminController extends BaseController{
 	
 	@RequestMapping(value = { "/admin/them-san-pham" }, method = RequestMethod.GET)
 	public ModelAndView AddProduct() {
-		_mvShare.addObject("user", new Users());
-		_mvShare.setViewName("user/Register");
+		_mvShare.addObject("newProduct", new Products());
+		_mvShare.setViewName("admin/addproduct");
 		return _mvShare;
 	}
 
 	@RequestMapping(value = { "/admin/them-san-pham" }, method = RequestMethod.POST)
-	public ModelAndView AddProduct(@ModelAttribute("user") Users user) {
-		int count = accountService.AddAccount(user);
+	public ModelAndView AddProduct(@ModelAttribute("newProduct") Products newProduct) {
+		int count = homeService.AddProduct(newProduct);
 		if (count > 0) {
-			_mvShare.addObject("status", "Đăng ký tài khoản thành công");
+			_mvShare.addObject("addProductStatus", "Thêm thành công");
 		} else {
-			_mvShare.addObject("status", "Đăng ký tài khoản thất bại");
+			_mvShare.addObject("addProductStatus", "Thêm thất bại");
 		}
-		_mvShare.setViewName("user/SignInPage");
+		_mvShare.setViewName("admin/listproducts");
 		return _mvShare;
 	}
 
