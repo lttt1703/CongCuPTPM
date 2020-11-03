@@ -1,6 +1,7 @@
 package com.webbanhang.Service.User;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,10 @@ public class BillsServiceImpl implements IBillsService{
 			billsDao.AddBillDetail(billDetail);
 		}
 		
+	}
+
+	public List<Bills> GetDataBill() {
+		return billsDao.GetDataBill();
 	}
 
 }

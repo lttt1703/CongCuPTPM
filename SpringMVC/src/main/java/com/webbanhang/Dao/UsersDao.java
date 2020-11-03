@@ -43,9 +43,19 @@ public class UsersDao extends BaseDao {
 		return result;
 	}
 	
+	public Users GetAdminByAcc(Users user) {
+		String sql = "SELECT * FROM users WHERE user = '" + user.getUser() + "' and admin = 1";
+		try {
+			Users result = _jdbcTemplate.queryForObject(sql, new MapperUsers());
+			return result;
+		} catch (Exception e) {
+			return null;
+		}	
+	}
+	
 	public List<Users> GetDataUsers() {
 		List<Users> list = new ArrayList<Users>();
-		String sql = "Select * from users";
+		String sql = "Select * from users where admin = 0";
 		list = _jdbcTemplate.query(sql, new MapperUsers());
 		return list;
 	}

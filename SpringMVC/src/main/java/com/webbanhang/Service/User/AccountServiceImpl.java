@@ -40,4 +40,18 @@ public class AccountServiceImpl implements IAccountService {
 		return userDao.GetDataUsers();
 	}
 
+	public Users CheckAccountAdmin(Users user) {
+		String pass = user.getPassword();
+		user = userDao.GetAdminByAcc(user);
+		if (user != null) {
+			if (pass.equals(user.getPassword())) {
+				return user;
+			} else {
+				return null;
+			}
+
+		}
+		return null;
+	}
+
 }

@@ -22,6 +22,7 @@
 				<div id="login-column" class="col-md-6">
 					<!-- Khung đăng nhập -->
 					<div id="login-box" class="col-md-12">
+					
 						<form:form action="dang-nhap" method="POST" modelAttribute="user">
 
 							<h3 class="text-center text-info">Đăng nhập</h3>

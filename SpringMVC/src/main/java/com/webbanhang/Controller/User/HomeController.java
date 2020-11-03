@@ -140,8 +140,6 @@ public class HomeController extends BaseController {
 	@RequestMapping(value = { "/check-out" }, method = RequestMethod.POST)
 	public String Checkout(HttpServletRequest request, HttpSession session, @ModelAttribute("bill") Bills bill) {
 		
-		//String quanty = (String)session.getAttribute("CartQuanty");
-		
 		Users loginInfo = (Users)session.getAttribute("userInfo");
 		if(loginInfo!=null) {
 			bill.setUser(loginInfo.getUser());
@@ -157,20 +155,4 @@ public class HomeController extends BaseController {
 		return "redirect:gio-hang";
 	}
 	
-	@RequestMapping(value = { "/admin/trang-chu" }, method = RequestMethod.GET)
-	public ModelAndView admin() {		
-		_mvShare.setViewName("admin/index");
-		return _mvShare;
-	}
-	@RequestMapping(value = { "/admin/list-user" }, method = RequestMethod.GET)
-	public ModelAndView ListUser() {	
-		_mvShare.addObject("listUser", accountService.GetDataUsers());
-		_mvShare.setViewName("admin/listuser");
-		return _mvShare;
-	}
-	@RequestMapping(value = { "/admin/list-products" }, method = RequestMethod.GET)
-	public ModelAndView ListProducts() {	
-		_mvShare.setViewName("admin/listproducts");
-		return _mvShare;
-	}
 }

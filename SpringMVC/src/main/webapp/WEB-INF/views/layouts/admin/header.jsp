@@ -26,8 +26,9 @@
 		<hr class="sidebar-divider my-0">
 
 		<!-- Nav Item - Dashboard -->
-		<li class="nav-item active"><a class="nav-link" href="<c:url value="/admin/trang-chu"/>">
-				<i class="fas fa-fw fa-tachometer-alt"></i> <span>Tổng quan</span>
+		<li class="nav-item active"><a class="nav-link"
+			href="<c:url value="/admin/trang-chu"/>"> <i
+				class="fas fa-fw fa-tachometer-alt"></i> <span>Tổng quan</span>
 		</a></li>
 
 		<!-- Divider -->
@@ -36,7 +37,7 @@
 		<!-- Heading -->
 		<div class="sidebar-heading">Interface</div>
 		<!-- Nav Item - Utilities Collapse Menu -->
-		<li class="nav-item"><a class="nav-link" href="donhang.html">
+		<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/danh-sach-don-hang"/>">
 				<i class="fas fa-fw fa-table"></i> <span>Đơn hàng</span>
 		</a></li>
 		<!-- Nav Item - Pages Collapse Menu -->
@@ -49,19 +50,20 @@
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">Products</h6>
-					<a class="collapse-item" href="#">Thêm sản phẩm</a> <a
-						class="collapse-item" href="#">Liệt kê sản phẩm</a> <a
-						class="collapse-item" href="#">Thêm loại sản phẩm</a> <a
-						class="collapse-item" href="<c:url value="/admin/list-products"/>">Liệt kê loại sản phẩm</a>
+					<a class="collapse-item" href="<c:url value="/admin/danh-sach-san-pham"/>">Danh sách sản phẩm</a> <a
+						class="collapse-item" href="<c:url value="/admin/danh-sach-danh-muc"/>">Danh sách danh mục</a> <a
+						class="collapse-item" href="#">Thêm sản phẩm mới</a> <a
+						class="collapse-item" href="#">Thêm danh mục mới</a>
 				</div>
 			</div></li>
 
 		<!-- Nav Item - Charts -->
-		<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/list-user"/>"> <i
+		<li class="nav-item"><a class="nav-link"
+			href="<c:url value="/admin/danh-sach-nguoi-dung"/>"> <i
 				class="fas fa-fw fa-chart-area"></i> <span>Quản lí tài khoản
 					user</span></a></li>
 		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" href="nhasanxuat.html">
+		<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/danh-sach-nsx"/>">
 				<i class="fas fa-fw fa-table"></i> <span>Nhà sản xuất</span>
 		</a></li>
 
@@ -133,31 +135,37 @@
 							</form>
 						</div></li>
 					<div class="topbar-divider d-none d-sm-block"></div>
+					<c:if test="${ empty adminInfo }">
+						<div class="header__top__right__auth">
+							<a href="/SpringMVC/admin/dang-nhap"><i class="fa fa-user"></i>
+								Login</a>
+						</div>
+					</c:if>
+					<c:if test="${ not empty adminInfo }">
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <span
+								class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN</span>
+								<img class="img-profile rounded-circle"
+								src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+						</a> <!-- Dropdown - User Information -->
+							<div
+								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+								aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="#"> <i
+									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a> <a class="dropdown-item" href="#"> <i
+									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+									Settings
+								</a>
+								<div class="dropdown-divider"></div>
+								<a href="/SpringMVC/admin/dang-xuat"><i class="fa fa-user"></i>
+									Đăng xuất</a>
+							</div></li>
+					</c:if>
 
-					<!-- Nav Item - User Information -->
-					<li class="nav-item dropdown no-arrow"><a
-						class="nav-link dropdown-toggle" href="#" id="userDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> <span
-							class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN</span>
-							<img class="img-profile rounded-circle"
-							src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-					</a> <!-- Dropdown - User Information -->
-						<div
-							class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-							aria-labelledby="userDropdown">
-							<a class="dropdown-item" href="#"> <i
-								class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-							</a> <a class="dropdown-item" href="#"> <i
-								class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-							</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="login.html" data-toggle="modal"
-								data-target="#logoutModal"> <i
-								class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-								Logout
-							</a>
-						</div></li>
 				</ul>
 			</nav>
 			<!-- End of Topbar -->

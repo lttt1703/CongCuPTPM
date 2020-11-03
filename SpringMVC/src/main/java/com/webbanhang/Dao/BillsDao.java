@@ -1,9 +1,15 @@
 package com.webbanhang.Dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.webbanhang.Entity.BillDetail;
 import com.webbanhang.Entity.Bills;
+import com.webbanhang.Entity.MapperBills;
+import com.webbanhang.Entity.MapperProducts;
+import com.webbanhang.Entity.Products;
 
 @Repository
 public class BillsDao extends BaseDao {
@@ -58,5 +64,12 @@ public class BillsDao extends BaseDao {
 		sql.append(")");
 		int insert = _jdbcTemplate.update(sql.toString());
 		return insert;
+	}
+	
+	public List<Bills> GetDataBill() {
+		List<Bills> list = new ArrayList<Bills>();
+		String sql = "Select * from bills";
+		list = _jdbcTemplate.query(sql, new MapperBills());
+		return list;
 	}
 }

@@ -16,5 +16,7 @@ public interface IAccountService {
 	@Autowired
 	public Users CheckAccount(Users user);
 	@Autowired
+	public Users CheckAccountAdmin(Users user);
+	@Autowired
 	public List<Users> GetDataUsers();
 }
