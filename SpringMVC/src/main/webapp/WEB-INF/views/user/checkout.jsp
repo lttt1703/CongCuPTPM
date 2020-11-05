@@ -88,9 +88,11 @@
 	<!-- Checkout Section End -->
 
 </body>
+<!--
 <content tag="script"> <script>
 	$(".checkout-info").on("click", function() {
 		alert("Đặt hàng thành công!")
 	});
 </script> </content>
+-->
 </html>

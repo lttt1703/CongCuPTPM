@@ -121,8 +121,6 @@
 		window.location = "EditCart/" + id + "/" + quanty;
 	});
 
-	$(".check-out").on("click", function() {
-		alert("Đăng nhập để tiến hành đặt hàng!")
-	});
 </script> </content>
+
 </html>

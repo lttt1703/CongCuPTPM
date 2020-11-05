@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.webbanhang.Entity.BillDetail;
 import com.webbanhang.Entity.Bills;
+import com.webbanhang.Entity.MapperBillDetail;
 import com.webbanhang.Entity.MapperBills;
 import com.webbanhang.Entity.MapperProducts;
 import com.webbanhang.Entity.Products;
@@ -71,5 +72,12 @@ public class BillsDao extends BaseDao {
 		String sql = "Select * from bills";
 		list = _jdbcTemplate.query(sql, new MapperBills());
 		return list;
+	}
+	
+	public List<BillDetail> GetDataBillDetail(String id) {
+		List<BillDetail> bill = new ArrayList<BillDetail>();
+		String sql = "Select * from billdetail where id_bill = "+id;
+		bill = _jdbcTemplate.query(sql, new MapperBillDetail());
+		return bill;
 	}
 }

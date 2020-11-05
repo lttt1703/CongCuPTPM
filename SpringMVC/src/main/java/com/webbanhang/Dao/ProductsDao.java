@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.webbanhang.Entity.Categories;
 import com.webbanhang.Entity.MapperProducts;
 import com.webbanhang.Entity.Products;
 import com.webbanhang.Entity.Users;
@@ -42,6 +43,13 @@ public class ProductsDao extends BaseDao{
 	}
 	
 	public Products GetProductById(String id) {
+		Products product = new Products();
+		String sql = "Select * from product where id = "+ id;
+		product = _jdbcTemplate.queryForObject(sql, new MapperProducts());
+		return product;
+	}
+	
+	public Products GetProductById(int id) {
 		Products product = new Products();
 		String sql = "Select * from product where id = "+ id;
 		product = _jdbcTemplate.queryForObject(sql, new MapperProducts());
@@ -101,28 +109,24 @@ public class ProductsDao extends BaseDao{
 		return update;
 	}
 	
-	public int DeleteProduct(Products product) {
+	public int DeleteProduct(String id) {
+
+		StringBuffer sql = new StringBuffer();
+		sql.append("DELETE FROM product WHERE id = "+id);
+		int insert = _jdbcTemplate.update(sql.toString());
+		return insert;
+	}
+	
+	public int AddCategory(Categories cate) {
 
 		StringBuffer sql = new StringBuffer();
 		sql.append("INSERT ");
-		sql.append("INTO product ");
+		sql.append("INTO categories ");
 		sql.append("( ");
-		sql.append("name, ");
-		sql.append("category_id, ");
-		sql.append("producer_id, ");
-		sql.append("price, ");
-		sql.append("detail, ");
-		sql.append("image, ");
-		sql.append("sale) ");
+		sql.append("name )");
 		sql.append("VALUES ");
 		sql.append("( ");
-		sql.append("'" + product.getName() + "', ");
-		sql.append(" " + product.getCategory_id() + ", ");
-		sql.append(" " + product.getProducer_id() + ", ");
-		sql.append(" " + product.getPrice() + ", ");
-		sql.append("'" + product.getDetail() + "', ");
-		sql.append("'" + product.getImage() + "', ");
-		sql.append(" " + product.getSale());
+		sql.append("'" + cate.getName() + "' ");
 		sql.append(")");
 
 		int insert = _jdbcTemplate.update(sql.toString());

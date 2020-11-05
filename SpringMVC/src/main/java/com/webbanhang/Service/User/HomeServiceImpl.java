@@ -54,11 +54,23 @@ public class HomeServiceImpl implements IHomeService{
 		return productDao.EditProduct(product);
 	}
 
-	public int DeleteProduct(Products product) {
-		return productDao.DeleteProduct(product);
+	public int DeleteProduct(String id) {
+		return productDao.DeleteProduct(id);
 	}
 
 	public Products GetProductById(String id) {
 		return productDao.GetProductById(id);
+	}
+	
+	public int AddCategory(Categories cate) {
+		return productDao.AddCategory(cate);
+	}
+
+	public int EditCategory(Categories cate) {
+		return categoriesDao.EditCategory(cate);
+	}
+
+	public int DeleteCategory(String id) {
+		return categoriesDao.DeleteCategory(id);
 	}
 }

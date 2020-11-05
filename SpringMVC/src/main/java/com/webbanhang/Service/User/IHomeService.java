@@ -33,5 +33,11 @@ public interface IHomeService {
 	@Autowired
 	public int EditProduct(Products product);
 	@Autowired
-	public int DeleteProduct(Products product);
+	public int DeleteProduct(String id);
+	@Autowired
+	public int AddCategory(Categories cate);
+	@Autowired
+	public int EditCategory(Categories cate);
+	@Autowired
+	public int DeleteCategory(String id);
 }

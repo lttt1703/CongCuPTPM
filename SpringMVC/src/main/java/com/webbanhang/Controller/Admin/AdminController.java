@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.webbanhang.Controller.User.BaseController;
+import com.webbanhang.Entity.BillDetail;
+import com.webbanhang.Entity.Categories;
 import com.webbanhang.Entity.Products;
 import com.webbanhang.Entity.Users;
 import com.webbanhang.Service.User.AccountServiceImpl;
@@ -117,6 +119,85 @@ public class AdminController extends BaseController{
 	@RequestMapping(value = { "/admin/chinh-sua-san-pham/{id}" }, method = RequestMethod.POST)
 	public ModelAndView EditProduct(@ModelAttribute("editProduct") Products editProduct, @PathVariable String id) {
 		int count = homeService.EditProduct(editProduct);
+		if (count > 0) {
+			_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
+			_mvShare.addObject("products", homeService.GetDataProducts());
+		}	
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/admin/xoa-san-pham/{id}" }, method = RequestMethod.GET)
+	public ModelAndView DeleteProduct() {
+		_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/admin/xoa-san-pham/{id}" }, method = RequestMethod.POST)
+	public ModelAndView DeleteProduct(@PathVariable String id) {
+		int count = homeService.DeleteProduct(id);
+		if (count > 0) {
+			_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
+			_mvShare.addObject("products", homeService.GetDataProducts());
+		}	
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/admin/chi-tiet-don-hang/{id}" }, method = RequestMethod.GET)
+	public ModelAndView BillDetail(@PathVariable String id) {
+		_mvShare.addObject("billDetail", billsService.GetDataBillDetail(id));
+		_mvShare.setViewName("admin/billdetail");
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/admin/them-danh-muc" }, method = RequestMethod.GET)
+	public ModelAndView AddCategory() {
+		_mvShare.addObject("newCategory", new Categories());
+		_mvShare.setViewName("admin/addcategory");
+		return _mvShare;
+	}
+
+	@RequestMapping(value = { "/admin/them-danh-muc" }, method = RequestMethod.POST)
+	public ModelAndView AddCategory(@ModelAttribute("newCategory") Categories newCategory) {
+		int count = homeService.AddCategory(newCategory);
+		if (count > 0) {
+			_mvShare.setViewName("redirect:/admin/danh-sach-danh-muc");
+			_mvShare.addObject("categories", homeService.GetDataCategories());
+		}	
+		return _mvShare;
+	}
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = { "/admin/chinh-sua-danh-muc/{id}" }, method = RequestMethod.GET)
+	public ModelAndView EditCategory(@PathVariable String id) {
+		_mvShare.addObject("editProduct", homeService.GetProductById(id));
+		_mvShare.setViewName("admin/editproduct");
+		return _mvShare;
+	}
+
+	@RequestMapping(value = { "/admin/chinh-sua-danh-muc/{id}" }, method = RequestMethod.POST)
+	public ModelAndView EditCategory(@ModelAttribute("editProduct") Products editProduct, @PathVariable String id) {
+		int count = homeService.EditProduct(editProduct);
+		if (count > 0) {
+			_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
+			_mvShare.addObject("products", homeService.GetDataProducts());
+		}	
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/admin/xoa-danh-muc/{id}" }, method = RequestMethod.GET)
+	public ModelAndView DeleteCategory() {
+		_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/admin/xoa-danh-muc/{id}" }, method = RequestMethod.POST)
+	public ModelAndView DeleteCategory(@PathVariable String id) {
+		int count = homeService.DeleteProduct(id);
 		if (count > 0) {
 			_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
 			_mvShare.addObject("products", homeService.GetDataProducts());

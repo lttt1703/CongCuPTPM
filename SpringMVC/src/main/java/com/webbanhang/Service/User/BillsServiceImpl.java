@@ -41,4 +41,8 @@ public class BillsServiceImpl implements IBillsService{
 		return billsDao.GetDataBill();
 	}
 
+	public List<BillDetail> GetDataBillDetail(String id) {
+		return billsDao.GetDataBillDetail(id);
+	}
+
 }

@@ -13,8 +13,7 @@
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Danh sách tài
-					khoản</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Chi tiết đơn hàng</h6>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -22,29 +21,24 @@
 						cellspacing="0">
 						<thead>
 							<tr>
-								<th>ID</th>
-								<th>User</th>
-								<th>Address</th>
-								<th>Phone</th>
-								<th>Total</th>
+								<th>ID Bill</th>
+								<th>Product</th>
 								<th>Quanty</th>
-								<th>Note</th>
-								<th>Detail</th>
+								<th>Total</th>
 							</tr>
 						</thead>
-						<c:forEach var="item" items="${ bills }">
+						<c:forEach var="item" items="${ billDetail }">
 							<tbody>
 								<tr>
-									<td>${ item.id }</td>
-									<td>${ item.user }</td>
-									<td>${ item.address }</td>
-									<td>${ item.phone }</td>
-									<td>${ item.total }</td>
+									<td>${ item.id_bill }</td>
+									<c:forEach var="itemProduct" items="${ products }">
+										<c:if test="${ itemProduct.id == item.id_product  }">
+											<td>${ itemProduct.name }</td>
+										</c:if>
+									</c:forEach>
 									<td>${ item.quanty }</td>
-									<td>${ item.note }</td>
-									<td><a
-										href="/SpringMVC/admin/chi-tiet-don-hang/${ item.id }"
-										class="btn btn-info btn-md font-weight-bold">View Detail</a></td>
+									<td><fmt:formatNumber type="number" groupingUsed="true"
+											value="${item.total}" /> ₫</td>
 								</tr>
 							</tbody>
 						</c:forEach>

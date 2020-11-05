@@ -24,22 +24,31 @@
 							<tr>
 								<th>Name</th>
 								<th>Detail</th>
+								<th>Price</th>
 								<th>image</th>
 								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
 						<c:forEach var="item" items="${ products }">
-							<tbody>
-								<tr>
-									<td>${ item.name }</td>
-									<td>${ item.detail }</td>
-									<td class="shoping__cart__item"><img width="100"
-										height="100" src="${ item.image }" alt="">
-									<td><a href="/SpringMVC/admin/chinh-sua-san-pham/${ item.id }" class="primary-btn">Edit</a></td>
-									<td><a href="/SpringMVC/admin/xoa-san-pham/${ item.id }" class="primary-btn">Delete</a></td>
-								</tr>
-							</tbody>
+							<form:form action="/SpringMVC/admin/xoa-san-pham/${ item.id }"
+								method="POST">
+								<tbody>
+									<tr>
+										<td>${ item.name }</td>
+										<td>${ item.detail }</td>
+										<td>${ item.price }</td>
+										<td class="shoping__cart__item"><img width="100"
+											height="100" src="${ item.image }" alt="">
+										<td><a
+											href="/SpringMVC/admin/chinh-sua-san-pham/${ item.id }"
+											class="btn btn-info btn-md font-weight-bold">Edit</a></td>
+										<td><input type="submit" name="submit" id="submit"
+											class="btn btn-info btn-md font-weight-bold"
+											value="Delete"></td>
+									</tr>
+								</tbody> 
+							</form:form>
 						</c:forEach>
 
 					</table>
