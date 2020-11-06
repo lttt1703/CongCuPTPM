@@ -24,6 +24,13 @@ public class CategoriesDao extends BaseDao{
 		return list;
 	}
 	
+	public Categories GetCategoryById(String id) {
+		Categories cate = new Categories();
+		String sql = "Select * from categories where id = "+ id;
+		cate = _jdbcTemplate.queryForObject(sql, new MapperCategories());
+		return cate;
+	}
+	
 	public List<NSX> GetDataNSX(){
 		List<NSX> list = new ArrayList<NSX>();
 		String sql = "SELECT * FROM producer";
@@ -41,8 +48,8 @@ public class CategoriesDao extends BaseDao{
 	public int EditCategory(Categories cate) {
 
 		StringBuffer  sql = new StringBuffer();
-		sql.append("UPDATE product SET ");
-		sql.append("name='"+cate.getName()+" ");
+		sql.append("UPDATE categories SET ");
+		sql.append("name='"+cate.getName()+"' ");
 		sql.append("WHERE ");
 		sql.append("id = "+cate.getId());
 

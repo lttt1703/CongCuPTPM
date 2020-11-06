@@ -15,9 +15,13 @@ public interface IHomeService {
 	@Autowired
 	public List<Categories> GetDataCategories();
 	@Autowired
+	public Categories GetCategoryById(String id);
+	@Autowired
 	public List<NSX> GetDataNSX();
 	@Autowired
 	public List<Products> GetDataProducts();
+	@Autowired
+	public List<Products> GetDataProductsBySearch(String search);
 	@Autowired
 	public List<Products> GetDataProductsByCategory(String idCategory);
 	@Autowired

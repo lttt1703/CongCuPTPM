@@ -174,33 +174,33 @@ public class AdminController extends BaseController{
 	
 	@RequestMapping(value = { "/admin/chinh-sua-danh-muc/{id}" }, method = RequestMethod.GET)
 	public ModelAndView EditCategory(@PathVariable String id) {
-		_mvShare.addObject("editProduct", homeService.GetProductById(id));
-		_mvShare.setViewName("admin/editproduct");
+		_mvShare.addObject("editCategory", homeService.GetCategoryById(id));
+		_mvShare.setViewName("admin/editcategory");
 		return _mvShare;
 	}
 
 	@RequestMapping(value = { "/admin/chinh-sua-danh-muc/{id}" }, method = RequestMethod.POST)
-	public ModelAndView EditCategory(@ModelAttribute("editProduct") Products editProduct, @PathVariable String id) {
-		int count = homeService.EditProduct(editProduct);
+	public ModelAndView EditCategory(@ModelAttribute("editCategory") Categories editCategory, @PathVariable String id) {
+		int count = homeService.EditCategory(editCategory);
 		if (count > 0) {
-			_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
-			_mvShare.addObject("products", homeService.GetDataProducts());
+			_mvShare.setViewName("redirect:/admin/danh-sach-danh-muc");
+			_mvShare.addObject("categories", homeService.GetDataCategories());
 		}	
 		return _mvShare;
 	}
 	
 	@RequestMapping(value = { "/admin/xoa-danh-muc/{id}" }, method = RequestMethod.GET)
 	public ModelAndView DeleteCategory() {
-		_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
+		_mvShare.setViewName("redirect:/admin/danh-sach-danh-muc");
 		return _mvShare;
 	}
 	
 	@RequestMapping(value = { "/admin/xoa-danh-muc/{id}" }, method = RequestMethod.POST)
 	public ModelAndView DeleteCategory(@PathVariable String id) {
-		int count = homeService.DeleteProduct(id);
+		int count = homeService.DeleteCategory(id);
 		if (count > 0) {
-			_mvShare.setViewName("redirect:/admin/danh-sach-san-pham");
-			_mvShare.addObject("products", homeService.GetDataProducts());
+			_mvShare.setViewName("redirect:/admin/danh-sach-danh-muc");
+			_mvShare.addObject("categories", homeService.GetDataCategories());
 		}	
 		return _mvShare;
 	}

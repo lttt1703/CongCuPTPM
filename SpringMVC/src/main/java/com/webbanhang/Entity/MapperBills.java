@@ -14,7 +14,7 @@ public class MapperBills implements RowMapper<Bills>{
 		b.setPhone(rs.getString("phone"));
 		b.setAddress(rs.getString("address"));
 		b.setTotal(rs.getDouble("total"));
-		b.setQuanty(rs.getInt("total"));
+		b.setQuanty(rs.getInt("quanty"));
 		b.setNote(rs.getString("note"));
 		return b;
 	}

@@ -42,6 +42,13 @@ public class ProductsDao extends BaseDao{
 		return list;
 	}
 	
+	public List<Products> GetDataProductsBySearch(String search) {
+		List<Products> list = new ArrayList<Products>();
+		String sql = "Select * from product where name like '%"+search+"%'";
+		list = _jdbcTemplate.query(sql, new MapperProducts());
+		return list;
+	}
+	
 	public Products GetProductById(String id) {
 		Products product = new Products();
 		String sql = "Select * from product where id = "+ id;

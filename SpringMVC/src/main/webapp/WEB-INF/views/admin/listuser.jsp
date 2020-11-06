@@ -25,8 +25,8 @@
 								<th>Name</th>
 								<th>User_Name</th>
 								<th>Email</th>
-								<th>Edit</th>
-								<th>Delete</th>
+								<th>Address</th>
+								<th>Phone</th>
 							</tr>
 						</thead>
 						<c:forEach var="item" items="${ listUser }">
@@ -35,10 +35,8 @@
 									<td>${ item.name }</td>
 									<td>${ item.user }</td>
 									<td>${ item.email }</td> 
-									<td><button type="button"
-											class="btn btn-info btn-mini edit-cart">Edit</button></td>
-									<td><button type="button"
-											class="btn btn-info btn-mini edit-cart">Delete</button></td>
+									<td></td> 
+									<td></td> 
 								</tr> 
 							</tbody>
 						</c:forEach>

@@ -155,5 +155,12 @@ public class HomeController extends BaseController {
 		return "redirect:gio-hang";
 	}
 	
+	@RequestMapping(value = { "tim-kiem/{search}" })
+	public ModelAndView Search(@PathVariable String search) {
+		_mvShare.addObject("productsBySearch", _homeService.GetDataProductsBySearch(search));
+		_mvShare.setViewName("user/search");
+		return _mvShare;
+	}
+	
 	
 }

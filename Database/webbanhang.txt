@@ -1,0 +1,325 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 06, 2020 at 09:07 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `webbanhang`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `billdetail`
+--
+
+CREATE TABLE `billdetail` (
+  `id` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `quanty` int(11) NOT NULL,
+  `total` double NOT NULL,
+  `id_bill` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `billdetail`
+--
+
+INSERT INTO `billdetail` (`id`, `id_product`, `quanty`, `total`, `id_bill`) VALUES
+(18, 1, 1, 200000, 11),
+(19, 2, 1, 100000, 11),
+(20, 3, 1, 50000, 11),
+(21, 3, 1, 50000, 12),
+(22, 1, 3, 600000, 13),
+(23, 2, 1, 100000, 13),
+(24, 10, 1, 45000, 14),
+(25, 40, 1, 50000, 15),
+(26, 10, 3, 135000, 15);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bills`
+--
+
+CREATE TABLE `bills` (
+  `id` int(11) NOT NULL,
+  `user` varchar(50) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `total` double NOT NULL,
+  `quanty` int(11) NOT NULL,
+  `note` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bills`
+--
+
+INSERT INTO `bills` (`id`, `user`, `address`, `phone`, `total`, `quanty`, `note`) VALUES
+(11, 'penny', '432/22 XVNT', '0909412123', 350000, 3, 'mai giao'),
+(12, 'user1', '432/22 XVNT', '0909412123', 50000, 1, 'ko'),
+(13, 'user1', '432/22 XVNT', '0909412123', 700000, 4, 'mai giao'),
+(14, 'penny', 'test', 'test', 45000, 1, 'test'),
+(15, 'thuantg', '432/22 XVNT', '0909412123', 185000, 4, 'mai giao cho tao');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Thịt && Trứng'),
+(2, 'Rau Củ'),
+(3, 'Trái Cây'),
+(4, 'Sữa Tươi'),
+(5, 'Thủy Hải Sản Cao Cấp'),
+(6, 'Bơ & Sữa'),
+(7, 'Thức Ăn Nhanh'),
+(8, 'Rượu Nhập Khẩu'),
+(9, 'Nước Sốt && Gia Vị'),
+(10, 'Nước Uống Trái Cây'),
+(11, 'Ngũ Cốc'),
+(15, 'ok');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `producer`
+--
+
+CREATE TABLE `producer` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `producer`
+--
+
+INSERT INTO `producer` (`id`, `name`, `address`, `phone`) VALUES
+(1, 'Cty 1', 'XVNT', '0123456789'),
+(2, 'Cty 2', 'Đinh Bộ Lĩnh', '0123456789'),
+(3, 'Cty 3', 'Quang Trung', '0123456789');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `producer_id` int(11) NOT NULL,
+  `price` float NOT NULL,
+  `detail` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `sale` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `category_id`, `producer_id`, `price`, `detail`, `image`, `sale`) VALUES
+(1, 'Thịt bò', 1, 2, 200000, 'Bla bla bla...', 'https://product.hstatic.net/1000191320/product/thit-bo-than.jpg', 0),
+(2, 'Cá ngừ', 5, 1, 100000, 'Bla bla bla...', 'https://product.hstatic.net/1000231019/product/cangudaiduong_master.gif', 0),
+(3, 'Rau cải', 2, 3, 50000, 'Bla bla bla...', 'https://hatgiongdalat.com/asset/upload/image/cai-ngot-huu-co.jpg?v=20190410', 0),
+(4, 'Thịt gà', 1, 2, 150000, 'Bla bla bla...', 'https://bizweb.dktcdn.net/thumb/1024x1024/100/325/688/products/uc-ga-cp.jpg?v=1539674668887', 0),
+(5, 'Thịt heo', 1, 2, 200000, 'Bla bla bla...', 'https://salt.tikicdn.com/ts/product/e7/1f/a2/6296e34c29a8e1125c5bb06efc6f97c1.jpg', 0),
+(6, 'Dưa hấu', 3, 1, 10000, 'Bla bla bla...', 'https://product.hstatic.net/1000335596/product/1100342_dc8d02b264bb4bbbb4c359f88564da75_1024x1024.jpg', 0),
+(7, 'Hamburger', 7, 1, 20000, 'Bla bla bla...', 'https://i.pinimg.com/originals/5a/d0/14/5ad0148e361aad1a8395344ad8488798.png', 0),
+(8, 'Đùi gà rán', 7, 2, 25000, 'Bla bla bla...', 'https://traicaysach71.com/upload/images/dui-ga-ran-tai-ben-tre.png', 0),
+(9, 'Nước cam', 10, 3, 50000, 'Bla bla bla...', 'https://png.pngtree.com/element_origin_min_pic/17/01/09/bfa7e3de2a4bfbdce23368445883c182.jpg', 0),
+(10, 'Nước nho', 10, 3, 45000, 'Bla bla bla...', 'https://cf.shopee.vn/file/06ca19058e83ec03087f066ab8956dff', 0),
+(11, 'Chuối tươi', 3, 2, 5000, 'Bla bla bla...', 'https://organicfood.vn/image/cache/catalog/Trai-cay-huu-co/trai-cay-Viet-Nam/chuoi-su-huu-co-500x500.jpg', 0),
+(12, 'Nho tươi', 3, 1, 145000, 'Bla bla bla...', 'https://bizweb.dktcdn.net/thumb/1024x1024/100/325/688/products/nho-do-my-khong-hat.jpg?v=1539598188480', 0),
+(13, 'Ổi', 3, 1, 15000, 'Bla bla bla...', 'https://fujimart.vn/image/cache/catalog/rau%20cu%20qua/1497333763855_9565434-502x502.png', 0),
+(14, 'Táo đỏ', 3, 1, 50000, 'Bla bla bla...', 'https://bizweb.dktcdn.net/thumb/1024x1024/100/325/688/products/tao-do-my-red-delicious-size-36-44.jpg?v=1539657386007', 0),
+(15, 'Xoài chín', 3, 2, 25000, 'Bla bla bla...', 'https://csfood.vn/wp-content/uploads/2018/03/Xo%C3%A0i-c%C3%A1t-C%E1%BA%A7n-Gi%E1%BB%9D.png', 0),
+(16, 'Rượu nho', 8, 1, 245000, 'Bla bla bla...', 'https://banner2.cleanpng.com/20180927/vwu/kisspng-dessert-wine-liqueur-burgundy-wine-glass-bottle-oregon-trails-pinot-noir-75-ml-cambridge-liquor-5bad7e8b7ee127.4880094915380967795197.jpg', 0),
+(17, 'Rượu vang', 8, 1, 450000, 'Bla bla bla...', 'https://ruouthuonghieu.com/wp-content/uploads/2018/03/RV_127.png', 0),
+(18, 'Sữa tươi Vinamilk', 4, 2, 35000, 'Bla bla bla...', 'https://cdn.tgdd.vn/Products/Images/2386/79312/bhx/sua-tuoi-co-duong-vinamilk-100-sua-tuoi-hop-1-lit-202002241240125364.jpg', 0),
+(19, 'Rau cần', 2, 1, 10000, 'Bla bla bla...', 'https://bizweb.dktcdn.net/thumb/large/100/138/549/products/rau-can-tay.jpg?v=1527210960637', 0),
+(20, 'Rau muống', 2, 1, 10000, 'Bla bla bla...', 'https://trongrauthuycanh.com.vn/wp-content/uploads/H%E1%BA%A1t-gi%E1%BB%91ng-rau-mu%E1%BB%91ng-ch%E1%BB%8Dn-l%E1%BB%8Dc-1.jpg', 0),
+(21, 'Súp lơ', 2, 1, 20000, 'Bla bla bla...', 'https://salt.tikicdn.com/ts/product/3a/50/33/0dbb18d2225102f56a2568a2a80cd6ed.jpg', 0),
+(22, 'Rau chân vịt', 2, 1, 10000, 'Bla bla bla...', 'https://cf.shopee.vn/file/74933d330f3eaff1077df5a7125824d0', 0),
+(23, 'Rau thơm', 2, 1, 10000, 'Bla bla bla...', 'https://thucphamdongxanh.com/wp-content/uploads/2019/09/hung-cay-rau-thom-goi-50g-sieu-thi-coop-food-cau-ong-dau-600x600.jpg', 0),
+(24, 'Tôm tít', 5, 2, 50000, 'Bla bla bla...', 'https://canghaisan.com/wp-content/uploads/2018/07/tom-tit-tuoi-ngon.jpg', 0),
+(25, 'Cá thu', 5, 2, 50000, 'Bla bla bla...', 'https://hn.check.net.vn/data/product/mainimages/original/product1641.png', 0),
+(26, 'Càng ghẹ', 5, 2, 50000, 'Bla bla bla...', 'https://camotnang.net/wp-content/uploads/2019/05/1-6.jpg', 0),
+(27, 'Mực ống', 5, 2, 50000, 'Bla bla bla...', 'https://canghaisan.com/wp-content/uploads/2018/07/Muc-ong-Tuoi-ngon-re.jpg', 0),
+(28, 'Bạch tuộc', 5, 2, 50000, 'Bla bla bla...', 'https://product.hstatic.net/1000301274/product/bach-tuoc-baby_678b99e1383b4b3f967bf850ee8626f9_grande.png', 0),
+(29, 'Sò huyết', 5, 2, 50000, 'Bla bla bla...', 'https://product.hstatic.net/1000182631/product/so_huyet_841dcc89139845fd81ca5231b7881575_grande.png', 0),
+(30, 'Cá mú', 5, 2, 50000, 'Bla bla bla...', 'https://haisan24h.com.vn/wp-content/uploads/2019/09/Ca_mu_sao_xanh.jpg', 0),
+(31, 'Burger gà', 7, 2, 50000, 'Bla bla bla...', 'https://mcdonalds.vn/uploads/2018/food/mon-an-chung/chicken_burger.png', 0),
+(32, 'Xúc xích chiên', 7, 2, 50000, 'Bla bla bla...', 'https://trasuaeni.com/image/cache/catalog/anh-san-pham/An-vat-Gia-Lai/Xuc-xich-chien-500x500.png', 0),
+(33, 'Khoai tây chiên', 7, 2, 50000, 'Bla bla bla...', 'https://product.hstatic.net/1000301274/product/khoai-t_y-c_t-th_ng.png', 0),
+(34, 'Khoai tây nghiền', 7, 2, 50000, 'Bla bla bla...', 'https://clipartstation.com/wp-content/uploads/2018/10/mash-potato-clipart-8.jpg', 0),
+(35, 'RÆ°á»£u náº¿p', 8, 2, 50000, 'Bla bla bla...', 'https://chinhgoc.vn/files/hang/thanh-hoa/ruou-nep-nga-son1.jpg', 0),
+(36, 'Hennessy', 8, 2, 50000, 'Bla bla bla...', 'https://www.phanphoiruoungoai.net/wp-content/uploads/2017/12/ruou-Cognac-hennessy-XO.png', 0),
+(37, 'Rượu rum', 8, 2, 50000, 'Bla bla bla...', 'https://banner2.cleanpng.com/20180526/yoa/kisspng-distilled-beverage-bourbon-whiskey-rum-wine-cooler-5b094d346b9f92.3737379815273362444408.jpg', 0),
+(38, 'Tương ớt', 9, 2, 50000, 'Bla bla bla...', 'https://bizweb.dktcdn.net/thumb/grande/100/387/792/products/utpong-ot-lon.jpg?v=1590921654117', 0),
+(39, 'Tương cà', 9, 2, 50000, 'Bla bla bla...', 'https://cf.shopee.vn/file/d45161cc30f7125bb7754a0cd2a78d31', 0),
+(40, 'Nước tương', 9, 2, 50000, 'Bla bla bla...', 'https://bizweb.dktcdn.net/thumb/grande/100/363/802/products/nuoc-tuong-toi-ot-chinsu-250ml.jpg?v=1590472581707', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `admin` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user`, `password`, `name`, `email`, `admin`) VALUES
+('admin', '123', 'admin', '', 1),
+('penny', '$2a$12$ohPmayOeI5qb1j4D39CTGOqsWF0Go6Zmf5XAFi1D45xO5YlgbF0W6', 'penny wise', 'penny@gmail.com', 0),
+('thuantg', '$2a$12$3iyWlIhxg7LMQwrJjGw1YOPpcE63x2Q1N40QHFemuTTOqsktl5HFG', 'Thuáº­n Nguyá»n VÄn', 'nv.thuandtha@gmail.com', 0),
+('thuantg1', '$2a$12$jk9.779bn35jEpfxQQtA8./V0m.h262HpiBpHfIBnZSEswYwh./yy', 'Nguyá»n VÄn A', 'trumthuanprocs@gmail.com', 0),
+('user1', '$2a$12$y3rWqD.G3NRkG.zRZNlG0uzw0gYCXjAKztey3swwtWVz0P03D217e', 'a', 'a@gmail.com', 0);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `billdetail`
+--
+ALTER TABLE `billdetail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_product` (`id_product`),
+  ADD KEY `id_bill` (`id_bill`);
+
+--
+-- Indexes for table `bills`
+--
+ALTER TABLE `bills`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user` (`user`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `producer`
+--
+ALTER TABLE `producer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `producer_id` (`producer_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `billdetail`
+--
+ALTER TABLE `billdetail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `bills`
+--
+ALTER TABLE `bills`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `producer`
+--
+ALTER TABLE `producer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `billdetail`
+--
+ALTER TABLE `billdetail`
+  ADD CONSTRAINT `billdetail_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `billdetail_ibfk_2` FOREIGN KEY (`id_bill`) REFERENCES `bills` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `bills`
+--
+ALTER TABLE `bills`
+  ADD CONSTRAINT `bills_ibfk_1` FOREIGN KEY (`user`) REFERENCES `users` (`user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`producer_id`) REFERENCES `producer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -13,7 +13,8 @@
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Danh sách sản phẩm</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Danh sách sản
+					phẩm</h6>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -28,16 +29,20 @@
 							</tr>
 						</thead>
 						<c:forEach var="item" items="${ categories }">
-							<tbody>
-								<tr>
-									<td>${ item.id }</td>
-									<td>${ item.name }</td>
-									<td><button type="button"
-											class="btn btn-info btn-mini edit-cart">Edit</button></td>
-									<td><button type="button"
-											class="btn btn-info btn-mini edit-cart">Delete</button></td>
-								</tr> 
-							</tbody>
+							<form:form action="/SpringMVC/admin/xoa-danh-muc/${ item.id }"
+								method="POST">
+								<tbody>
+									<tr>
+										<td>${ item.id }</td>
+										<td>${ item.name }</td>
+										<td><a
+											href="/SpringMVC/admin/chinh-sua-danh-muc/${ item.id }"
+											class="btn btn-info btn-md font-weight-bold">Edit</a></td>
+										<td><input type="submit" name="submit" id="submit"
+											class="btn btn-info btn-md font-weight-bold" value="Delete"></td>
+									</tr>
+								</tbody>
+							</form:form>
 						</c:forEach>
 
 					</table>

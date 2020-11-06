@@ -39,7 +39,8 @@
 									<td>${ item.user }</td>
 									<td>${ item.address }</td>
 									<td>${ item.phone }</td>
-									<td>${ item.total }</td>
+									<td><fmt:formatNumber type="number" groupingUsed="true"
+											value="${item.total}" /> ₫</td>
 									<td>${ item.quanty }</td>
 									<td>${ item.note }</td>
 									<td><a

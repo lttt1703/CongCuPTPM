@@ -62,9 +62,7 @@
 			href="<c:url value="/admin/danh-sach-nguoi-dung"/>"> <i
 				class="fas fa-fw fa-chart-area"></i> <span>Quản lí tài khoản
 					user</span></a></li>
-		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/danh-sach-nsx"/>">
-				<i class="fas fa-fw fa-table"></i> <span>Nhà sản xuất</span>
+		<!-- Nav Item - Tables --> 
 		</a></li>
 
 		<!-- Divider -->

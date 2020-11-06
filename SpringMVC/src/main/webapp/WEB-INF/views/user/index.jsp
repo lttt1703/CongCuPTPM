@@ -23,8 +23,8 @@
 					<div class="hero__search">
 						<div class="hero__search__form">
 							<form action="#">
-								<input type="text" placeholder="Bạn cần tìm kiếm gì ?">
-								<button type="submit" class="site-btn">SEARCH</button>
+								<input type="text" placeholder="Bạn cần tìm kiếm gì ?" id="search-input">
+								<button type="button" class="site-btn search">SEARCH</button>
 							</form>
 						</div>
 						<div class="hero__search__phone">
@@ -151,3 +151,10 @@
 	</div>
 	<!-- Banner End -->
 </body>
+<content tag="script"> <script>
+	$(".search").on("click", function() {
+		var search = $("#search-input").val();
+		window.location = "tim-kiem/"+search;
+	});
+
+</script> </content>
