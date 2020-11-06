@@ -90,12 +90,13 @@ public class HomeController extends BaseController {
 	@RequestMapping(value = { "/dang-ky" }, method = RequestMethod.POST)
 	public ModelAndView CreateAccount(@ModelAttribute("user") Users user) {
 		int count = accountService.AddAccount(user);
+		_mvShare.addObject("status", "");
 		if (count > 0) {
 			_mvShare.addObject("status", "Đăng ký tài khoản thành công");
+			_mvShare.setViewName("user/SignInPage");
 		} else {
-			_mvShare.addObject("status", "Đăng ký tài khoản thất bại");
-		}
-		_mvShare.setViewName("user/SignInPage");
+			_mvShare.addObject("status", "Tên tài khoản đã tồn tại");
+		}	
 		return _mvShare;
 	}
 	

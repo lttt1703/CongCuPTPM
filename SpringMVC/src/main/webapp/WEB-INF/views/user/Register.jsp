@@ -24,6 +24,7 @@
 						<form:form action="dang-ky" method="POST" modelAttribute="user">
 
 							<h3 class="text-center text-info">Đăng Ký</h3>
+							<p style="color: red;">${ status }</p>
 							<!-- FirstName -->
 							<div class="form-group">
 								<label for="username" class="text-info font-weight-bold">Họ

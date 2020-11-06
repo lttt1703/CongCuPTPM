@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.webbanhang.Entity.Users;
 import com.webbanhang.Service.User.HomeServiceImpl;
 import com.webbanhang.Service.User.PaginatesServiceImpl;
 
@@ -22,6 +23,7 @@ public class BaseController {
 		_mvShare.addObject("categories", _homeService.GetDataCategories());
 		_mvShare.addObject("products", _homeService.GetDataProducts());
 		_mvShare.addObject("nsx", _homeService.GetDataNSX());
+		_mvShare.addObject("admin", new Users());
 		return _mvShare;
 	}
 }

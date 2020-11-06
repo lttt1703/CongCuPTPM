@@ -31,8 +31,7 @@ public class AdminController extends BaseController{
 	HomeServiceImpl homeService = new HomeServiceImpl();
 		
 	@RequestMapping(value = { "/admin/","/admin/trang-chu" }, method = RequestMethod.GET)
-	public ModelAndView admin(Users admin) {
-		_mvShare.addObject("admin", new Users());
+	public ModelAndView admin() {
 		_mvShare.setViewName("admin/index");
 		return _mvShare;
 	} 

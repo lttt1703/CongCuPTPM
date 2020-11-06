@@ -32,9 +32,12 @@ public class UsersDao extends BaseDao {
 		sql.append("'" + user.getEmail() + "', ");
 		sql.append(user.getAdmin() + " ");
 		sql.append(")");
-
-		int insert = _jdbcTemplate.update(sql.toString());
-		return insert;
+		try {
+			int insert = _jdbcTemplate.update(sql.toString());
+			return insert;
+		} catch (Exception e) {
+			return 0;
+		}	
 	}
 
 	public Users GetUserByAcc(Users user) {
