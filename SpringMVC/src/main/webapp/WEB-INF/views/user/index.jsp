@@ -62,7 +62,7 @@
 						<div class="col-lg-3">
 							<div class="categories__item set-bg" data-setbg="${ item.image }">
 								<h5>
-									<a href="san-pham/${ item.id }">${ item.name }</a>
+									<a href="/SpringMVC/san-pham/${ item.id }">${ item.name }</a>
 								</h5>
 							</div>
 						</div>
@@ -98,7 +98,7 @@
 							<div class="featured__item__text">
 								<h6>
 
-									<a href="san-pham/${ item.id }">${ item.name } </a>
+									<a href="/SpringMVC/san-pham/${ item.id }">${ item.name } </a>
 								</h6>
 								<h5>
 									<fmt:formatNumber type="number" groupingUsed="true"

@@ -42,9 +42,13 @@ public class UsersDao extends BaseDao {
 
 	public Users GetUserByAcc(Users user) {
 		String sql = "SELECT * FROM users WHERE user = '" + user.getUser() + "'";
-		Users result = _jdbcTemplate.queryForObject(sql, new MapperUsers());
-		return result;
-	}
+		try {
+			Users result = _jdbcTemplate.queryForObject(sql, new MapperUsers());
+			return result;
+		} catch (Exception e) {
+			return null;
+		}		
+	} 
 	
 	public Users GetAdminByAcc(Users user) {
 		String sql = "SELECT * FROM users WHERE user = '" + user.getUser() + "' and admin = 1";
